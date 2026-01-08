@@ -1,14 +1,12 @@
 import { ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { LayoutDashboard, Database, Zap, Settings as SettingsIcon, Activity, BarChart3, Menu } from 'lucide-react';
+import { LayoutDashboard, Database, Settings as SettingsIcon, Activity, Menu } from 'lucide-react';
 import { LogoFullWordmark } from './Logo';
 
 const navigation = [
   { name: 'Dashboard', href: '/', icon: LayoutDashboard },
   { name: 'Menus', href: '/menus', icon: Menu },
   { name: 'Cache & Revalidation', href: '/cache-revalidation', icon: Database },
-  { name: 'Webhooks', href: '/webhooks', icon: Zap },
-  { name: 'Performance', href: '/performance', icon: BarChart3 },
   { name: 'Settings', href: '/settings', icon: SettingsIcon },
   { name: 'Activity Log', href: '/activity-log', icon: Activity },
 ];

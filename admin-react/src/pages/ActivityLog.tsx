@@ -283,8 +283,8 @@ export function ActivityLogPage() {
                         )}
                       </td>
                       <td className="px-4 py-3 text-sm">
-                        <div className="text-gray-900">{formatDate(log.timestamp * 1000)}</div>
-                        <div className="text-gray-500 text-xs">{timeAgo(log.timestamp * 1000)}</div>
+                        <div className="text-gray-900">{formatDate(log.timestamp)}</div>
+                        <div className="text-gray-500 text-xs">{timeAgo(log.timestamp)}</div>
                       </td>
                       <td className="px-4 py-3">
                         <span className={getTypeBadge(log.type)}>{log.type}</span>

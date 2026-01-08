@@ -5,12 +5,10 @@ import { Dashboard } from './pages/Dashboard';
 import { CacheRevalidation } from './pages/CacheRevalidation';
 import { Settings } from './pages/Settings';
 import { MenuSettings } from './pages/MenuSettings';
-import { Webhooks } from './pages/Webhooks';
 import { ActivityLogPage } from './pages/ActivityLog';
-import { Performance } from './pages/Performance';
 import { SetupWizard } from './pages/SetupWizard';
 import { api } from './lib/api';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function AppRoutes() {
   const history = useHistory();
@@ -46,11 +44,6 @@ function AppRoutes() {
       <Route path="/revalidation">
         <Redirect to="/cache-revalidation" />
       </Route>
-      <Route path="/webhooks">
-        <Layout>
-          <Webhooks />
-        </Layout>
-      </Route>
       <Route path="/settings">
         <Layout>
           <Settings />
@@ -64,11 +57,6 @@ function AppRoutes() {
       <Route path="/activity-log">
         <Layout>
           <ActivityLogPage />
-        </Layout>
-      </Route>
-      <Route path="/performance">
-        <Layout>
-          <Performance />
         </Layout>
       </Route>
       <Route>
