@@ -1,0 +1,100 @@
+/**
+ * Card Block - Editor Styles
+ */
+
+.flatwp-card {
+  transition: all 200ms ease;
+
+  // Color schemes
+  &--light {
+    background: #ffffff;
+    color: #111827;
+  }
+
+  &--dark {
+    background: #1f2937;
+    color: #f9fafb;
+  }
+
+  &--primary {
+    background: #2563eb;
+    color: #ffffff;
+  }
+
+  &--transparent {
+    background: transparent;
+    color: inherit;
+  }
+
+  // Border radius
+  &--radius-none { border-radius: 0; }
+  &--radius-sm { border-radius: 0.25rem; }
+  &--radius-md { border-radius: 0.5rem; }
+  &--radius-lg { border-radius: 0.75rem; }
+  &--radius-xl { border-radius: 1rem; }
+  &--radius-2xl { border-radius: 1.5rem; }
+
+  // Border styles
+  &--border-none { border: none; }
+  &--border-subtle {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    &.flatwp-card--dark {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+  &--border-prominent {
+    border: 2px solid rgba(0, 0, 0, 0.2);
+
+    &.flatwp-card--dark {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  // Shadows
+  &--shadow-none { box-shadow: none; }
+  &--shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
+  &--shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
+  &--shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); }
+  &--shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); }
+
+  // Padding
+  &--padding-none { padding: 0; }
+  &--padding-compact { padding: 1rem; }
+  &--padding-default { padding: 1.5rem; }
+  &--padding-relaxed { padding: 2.5rem; }
+
+  // Hover effects
+  &--hover-lift {
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &--hover-glow {
+    &:hover {
+      box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
+    }
+  }
+
+  &--hover-border {
+    &:hover {
+      border-color: #2563eb;
+    }
+  }
+
+  // Inner content styling
+  .block-editor-inner-blocks {
+    > .block-editor-block-list__layout {
+      > * {
+        &:first-child {
+          margin-top: 0;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

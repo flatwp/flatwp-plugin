@@ -1,0 +1,139 @@
+/**
+ * Logo Row Block - Editor Styles
+ */
+
+.flatwp-logo-row {
+  padding: 3rem 1.5rem;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    opacity: 0.6;
+
+    &:focus { outline: none; }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns, 5), 1fr);
+    gap: 2rem;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    transition: all 200ms ease;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
+  }
+
+  // Size variants
+  &--size-small .flatwp-logo-row__item img {
+    max-height: 32px;
+  }
+
+  &--size-medium .flatwp-logo-row__item img {
+    max-height: 48px;
+  }
+
+  &--size-large .flatwp-logo-row__item img {
+    max-height: 64px;
+  }
+
+  // Display modes
+  &--grayscale .flatwp-logo-row__item img {
+    filter: grayscale(100%);
+    opacity: 0.6;
+  }
+
+  &--grayscale-hover .flatwp-logo-row__item {
+    img {
+      filter: grayscale(100%);
+      opacity: 0.6;
+      transition: filter 200ms ease, opacity 200ms ease;
+    }
+
+    &:hover img {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+  }
+
+  // Color schemes
+  &--light {
+    background: #f9fafb;
+    color: #111827;
+  }
+
+  &--dark {
+    background: #111827;
+    color: #f9fafb;
+
+    .flatwp-logo-row__empty {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &--transparent {
+    background: transparent;
+  }
+
+  // Alignment
+  &--align-left .flatwp-logo-row__heading { text-align: left; }
+  &--align-center .flatwp-logo-row__heading { text-align: center; }
+  &--align-right .flatwp-logo-row__heading { text-align: right; }
+}
+
+// Inspector styles
+.flatwp-logo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  .flatwp-logo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background: #f3f4f6;
+    border-radius: 0.25rem;
+
+    img {
+      object-fit: contain;
+    }
+  }
+}

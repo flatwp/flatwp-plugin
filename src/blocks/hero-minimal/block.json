@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/hero-minimal",
+  "version": "1.0.0",
+  "title": "Hero Minimal",
+  "category": "flatwp",
+  "icon": "align-center",
+  "description": "A clean, minimal hero section with heading, description, and call-to-action.",
+  "keywords": ["hero", "header", "banner", "cta"],
+  "textdomain": "flatwp",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center",
+      "enum": ["left", "center", "right"]
+    },
+    "ctaText": {
+      "type": "string",
+      "default": ""
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "className": true,
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

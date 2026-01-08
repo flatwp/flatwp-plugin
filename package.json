@@ -1,0 +1,20 @@
+{
+  "name": "flatwp-wordpress-plugin",
+  "version": "0.8.0",
+  "description": "FlatWP WordPress Plugin with Gutenberg Blocks",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "packages-update": "wp-scripts packages-update"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^28.0.0"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "^13.0.0",
+    "@wordpress/blocks": "^13.0.0",
+    "@wordpress/components": "^28.0.0",
+    "@wordpress/element": "^6.0.0",
+    "@wordpress/i18n": "^5.0.0"
+  }
+}

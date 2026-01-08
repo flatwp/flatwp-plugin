@@ -1,0 +1,115 @@
+{
+  "key": "group_flatwp_page_sidebar_blocks",
+  "title": "Page Sidebar Content",
+  "fields": [
+    {
+      "key": "field_page_sidebar_blocks",
+      "label": "Sidebar Blocks",
+      "name": "sidebar_blocks",
+      "type": "flexible_content",
+      "instructions": "Add content blocks for the page sidebar. These will only display if 'Show Sidebar' is enabled in FlatWP Page Settings.",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "layouts": {
+        "content_section": {
+          "key": "layout_sidebar_content_section",
+          "name": "content_section",
+          "label": "Content Widget",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_sidebar_content_title",
+              "label": "Title",
+              "name": "title",
+              "type": "text",
+              "required": 0,
+              "placeholder": "Widget title..."
+            },
+            {
+              "key": "field_sidebar_content_content",
+              "label": "Content",
+              "name": "content",
+              "type": "wysiwyg",
+              "required": 1,
+              "tabs": "all",
+              "toolbar": "basic",
+              "media_upload": 1
+            }
+          ],
+          "min": "",
+          "max": ""
+        },
+        "cta_simple": {
+          "key": "layout_sidebar_cta_simple",
+          "name": "cta_simple",
+          "label": "CTA Widget",
+          "display": "block",
+          "sub_fields": [
+            {
+              "key": "field_sidebar_cta_heading",
+              "label": "Heading",
+              "name": "heading",
+              "type": "text",
+              "required": 1,
+              "placeholder": "Call to action heading..."
+            },
+            {
+              "key": "field_sidebar_cta_text",
+              "label": "Text",
+              "name": "text",
+              "type": "textarea",
+              "required": 0,
+              "rows": 3,
+              "placeholder": "Supporting text..."
+            },
+            {
+              "key": "field_sidebar_cta_button_text",
+              "label": "Button Text",
+              "name": "button_text",
+              "type": "text",
+              "required": 1,
+              "default_value": "Learn More",
+              "placeholder": "Button text..."
+            },
+            {
+              "key": "field_sidebar_cta_button_url",
+              "label": "Button URL",
+              "name": "button_url",
+              "type": "url",
+              "required": 1,
+              "placeholder": "https://..."
+            }
+          ],
+          "min": "",
+          "max": ""
+        }
+      },
+      "button_label": "Add Sidebar Block",
+      "min": "",
+      "max": ""
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "page"
+      }
+    ]
+  ],
+  "menu_order": 1,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Configure sidebar content for this page. Must enable 'Show Sidebar' in FlatWP Page Settings.",
+  "show_in_rest": 1
+}

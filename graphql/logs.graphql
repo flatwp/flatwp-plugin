@@ -1,0 +1,294 @@
+# FlatWP Activity Logs GraphQL Schema
+#
+# This file documents the GraphQL types and queries available for accessing
+# FlatWP activity logs through the WPGraphQL API.
+
+"""
+A single FlatWP activity log entry
+"""
+type FlatWPLog {
+  """
+  The unique identifier for the log entry
+  """
+  id: String!
+
+  """
+  The Unix timestamp when the log was created
+  """
+  timestamp: Int!
+
+  """
+  The log type: webhook, manual, system, error, or debug
+  """
+  type: String!
+
+  """
+  The log severity: success, error, warning, or info
+  """
+  severity: String!
+
+  """
+  The human-readable log message
+  """
+  message: String!
+
+  """
+  Additional context data as a JSON string
+  """
+  context: String
+
+  """
+  Response data from the webhook as a JSON string
+  """
+  responseData: String
+
+  """
+  Response time in milliseconds
+  """
+  responseTime: Int
+
+  """
+  HTTP response code from the webhook
+  """
+  httpCode: Int
+
+  """
+  WordPress user ID who triggered the log
+  """
+  userId: Int
+
+  """
+  The WordPress user who triggered the log
+  """
+  user: User
+}
+
+"""
+Information about pagination in a connection
+"""
+type PageInfo {
+  """
+  Whether there is a next page available
+  """
+  hasNextPage: Boolean!
+
+  """
+  Whether there is a previous page available
+  """
+  hasPreviousPage: Boolean!
+
+  """
+  Cursor for the first item in the current page
+  """
+  startCursor: String
+
+  """
+  Cursor for the last item in the current page
+  """
+  endCursor: String
+}
+
+"""
+An edge in a logs connection (contains node and cursor)
+"""
+type FlatWPLogEdge {
+  """
+  The log entry
+  """
+  node: FlatWPLog
+
+  """
+  The cursor for pagination
+  """
+  cursor: String
+}
+
+"""
+A connection of FlatWP activity logs with pagination support
+"""
+type FlatWPLogsConnection {
+  """
+  The edges of the connection
+  """
+  edges: [FlatWPLogEdge]
+
+  """
+  Information about the current page
+  """
+  pageInfo: PageInfo
+
+  """
+  The total number of logs matching the filter
+  """
+  total: Int
+
+  """
+  The total number of pages available
+  """
+  totalPages: Int
+}
+
+extend type RootQuery {
+  """
+  Get FlatWP activity logs with pagination and filtering
+
+  Args:
+    first: Number of logs per page (default: 20)
+    after: Cursor for pagination
+    type: Filter by log type (webhook, manual, system, error, debug, all)
+    severity: Filter by severity (success, error, warning, info, all)
+    orderBy: Field to sort by (timestamp, id)
+    order: Sort direction (ASC, DESC)
+
+  Example:
+    query {
+      flatwpLogs(first: 10, type: "webhook", order: "DESC") {
+        edges {
+          node {
+            id
+            timestamp
+            type
+            severity
+            message
+            responseTime
+            httpCode
+          }
+          cursor
+        }
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        total
+        totalPages
+      }
+    }
+  """
+  flatwpLogs(
+    first: Int = 20
+    after: String
+    type: String = "all"
+    severity: String = "all"
+    orderBy: String = "timestamp"
+    order: String = "DESC"
+  ): FlatWPLogsConnection
+
+  """
+  Get the count of error logs in the last 24 hours
+
+  Example:
+    query {
+      flatwpErrorCount
+    }
+  """
+  flatwpErrorCount: Int
+
+  """
+  Get recent FlatWP activity logs (no pagination)
+
+  Args:
+    limit: Number of logs to return (default: 10)
+
+  Example:
+    query {
+      flatwpRecentActivity(limit: 5) {
+        id
+        timestamp
+        type
+        severity
+        message
+        user {
+          id
+          name
+        }
+      }
+    }
+  """
+  flatwpRecentActivity(limit: Int = 10): [FlatWPLog]
+}
+
+# Common Query Examples:
+
+# 1. Get recent webhook logs (last 20)
+# query {
+#   flatwpLogs(first: 20, type: "webhook", order: "DESC") {
+#     edges {
+#       node {
+#         id
+#         timestamp
+#         type
+#         severity
+#         message
+#         httpCode
+#         responseTime
+#       }
+#     }
+#     pageInfo {
+#       hasNextPage
+#       endCursor
+#     }
+#     total
+#   }
+# }
+
+# 2. Get error logs with severity filtering
+# query {
+#   flatwpLogs(
+#     first: 50
+#     type: "error"
+#     severity: "error"
+#     order: "DESC"
+#   ) {
+#     edges {
+#       node {
+#         id
+#         timestamp
+#         message
+#         context
+#       }
+#     }
+#     total
+#   }
+# }
+
+# 3. Get paginated logs with cursor
+# query {
+#   flatwpLogs(
+#     first: 10
+#     after: "eyJwYWdlIjogMiwgImluZGV4IjogMH0="
+#     order: "DESC"
+#   ) {
+#     edges {
+#       node {
+#         id
+#         timestamp
+#         message
+#       }
+#       cursor
+#     }
+#     pageInfo {
+#       hasNextPage
+#       endCursor
+#     }
+#   }
+# }
+
+# 4. Get recent activity with user information
+# query {
+#   flatwpRecentActivity(limit: 10) {
+#     id
+#     timestamp
+#     message
+#     severity
+#     user {
+#       id
+#       name
+#       email
+#     }
+#   }
+# }
+
+# 5. Get error count for monitoring
+# query {
+#   flatwpErrorCount
+# }

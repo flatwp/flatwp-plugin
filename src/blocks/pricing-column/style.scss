@@ -1,0 +1,157 @@
+/**
+ * Pricing Column Block - Frontend Styles
+ *
+ * These styles apply to the block on the frontend
+ */
+
+.wp-block-flatwp-pricing-column {
+  &.flatwp-pricing-column {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    max-width: 360px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &.is-highlighted {
+      border-color: #3b82f6;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.15);
+      transform: scale(1.02);
+      position: relative;
+    }
+
+    .flatwp-pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #3b82f6;
+      color: white;
+      padding: 4px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .flatwp-pricing-header {
+      margin-bottom: 24px;
+    }
+
+    .flatwp-pricing-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: #1f2937;
+    }
+
+    .flatwp-pricing-price {
+      margin-bottom: 8px;
+    }
+
+    .flatwp-pricing-amount {
+      font-size: 48px;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    .flatwp-pricing-period {
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    .flatwp-pricing-description {
+      color: #6b7280;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .flatwp-pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      text-align: left;
+
+      .flatwp-feature {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 8px 0;
+        font-size: 14px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+          flex-shrink: 0;
+        }
+
+        &.is-included {
+          color: #1f2937;
+
+          svg {
+            fill: #10b981;
+          }
+        }
+
+        &.is-excluded {
+          color: #9ca3af;
+
+          svg {
+            fill: #d1d5db;
+          }
+        }
+      }
+    }
+
+    .flatwp-pricing-cta {
+      .flatwp-pricing-button {
+        display: inline-block;
+        background: #3b82f6;
+        color: white;
+        padding: 12px 32px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        text-decoration: none;
+        transition: background 0.2s ease;
+
+        &:hover {
+          background: #2563eb;
+          color: white;
+        }
+      }
+    }
+
+    &.is-highlighted .flatwp-pricing-button {
+      background: #1d4ed8;
+
+      &:hover {
+        background: #1e40af;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .wp-block-flatwp-pricing-column {
+    &.flatwp-pricing-column {
+      padding: 24px;
+      max-width: 100%;
+
+      .flatwp-pricing-amount {
+        font-size: 36px;
+      }
+
+      .flatwp-pricing-title {
+        font-size: 20px;
+      }
+    }
+  }
+}

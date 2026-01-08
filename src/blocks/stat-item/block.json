@@ -1,0 +1,31 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/stat-item",
+  "version": "1.0.0",
+  "title": "Stat Item",
+  "category": "flatwp",
+  "icon": "chart-bar",
+  "description": "A single statistic with value and label.",
+  "keywords": ["stat", "number", "metric"],
+  "textdomain": "flatwp",
+  "parent": ["flatwp/statistics"],
+  "attributes": {
+    "value": {
+      "type": "string",
+      "default": "100+"
+    },
+    "label": {
+      "type": "string",
+      "default": "Label"
+    }
+  },
+  "supports": {
+    "html": false,
+    "className": true,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

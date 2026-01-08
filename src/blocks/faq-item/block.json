@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/faq-item",
+  "version": "1.0.0",
+  "title": "FAQ Item",
+  "category": "flatwp",
+  "icon": "editor-help",
+  "description": "A single FAQ question and answer",
+  "keywords": ["faq", "question", "answer"],
+  "textdomain": "flatwp",
+  "parent": ["flatwp/faq"],
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "usesContext": [
+    "flatwp/faqColorScheme",
+    "flatwp/faqIconStyle",
+    "flatwp/faqBorderStyle"
+  ],
+  "attributes": {
+    "question": {
+      "type": "string",
+      "default": ""
+    },
+    "answer": {
+      "type": "string",
+      "default": ""
+    },
+    "isOpenByDefault": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css"
+}

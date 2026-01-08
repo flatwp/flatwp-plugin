@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/pricing-column",
+  "version": "1.0.0",
+  "title": "Pricing Column",
+  "category": "flatwp",
+  "icon": "money-alt",
+  "description": "A pricing column block for displaying pricing plans.",
+  "keywords": ["pricing", "plans", "subscription", "price"],
+  "textdomain": "flatwp",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Basic"
+    },
+    "price": {
+      "type": "string",
+      "default": "$29"
+    },
+    "period": {
+      "type": "string",
+      "default": "/month"
+    },
+    "description": {
+      "type": "string",
+      "default": "Perfect for getting started"
+    },
+    "features": {
+      "type": "array",
+      "default": [
+        { "text": "Feature 1", "included": true },
+        { "text": "Feature 2", "included": true },
+        { "text": "Feature 3", "included": false }
+      ],
+      "items": {
+        "type": "object"
+      }
+    },
+    "ctaText": {
+      "type": "string",
+      "default": "Get Started"
+    },
+    "ctaUrl": {
+      "type": "string",
+      "default": "#"
+    },
+    "highlighted": {
+      "type": "boolean",
+      "default": false
+    },
+    "highlightLabel": {
+      "type": "string",
+      "default": "Most Popular"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "className": true,
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
+}

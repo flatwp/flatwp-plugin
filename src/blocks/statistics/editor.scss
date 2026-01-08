@@ -1,0 +1,50 @@
+/**
+ * Statistics Section Block - Editor Styles
+ */
+
+.flatwp-statistics {
+  padding: 3rem 2rem;
+  background: #f3f4f6;
+  border-radius: 0.5rem;
+
+  .flatwp-statistics-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .flatwp-statistics-grid {
+    display: grid;
+    gap: 2rem;
+
+    &.columns-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    &.columns-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &.columns-4 {
+      grid-template-columns: repeat(2, 1fr);
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    // Handle InnerBlocks wrapper
+    > .block-editor-inner-blocks {
+      display: contents;
+
+      > .block-editor-block-list__layout {
+        display: contents;
+      }
+    }
+  }
+}

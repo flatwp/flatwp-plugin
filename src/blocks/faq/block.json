@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/faq",
+  "version": "1.0.0",
+  "title": "FAQ Section",
+  "category": "flatwp",
+  "icon": "editor-help",
+  "description": "Frequently asked questions with smooth accordion animation",
+  "keywords": ["faq", "accordion", "questions", "answers"],
+  "textdomain": "flatwp",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "anchor": true,
+    "className": true
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Frequently Asked Questions"
+    },
+    "subheading": {
+      "type": "string",
+      "default": "Find answers to common questions about our product."
+    },
+    "showHeading": {
+      "type": "boolean",
+      "default": true
+    },
+    "layout": {
+      "type": "string",
+      "default": "stacked",
+      "enum": ["stacked", "two-column", "side-by-side"]
+    },
+    "colorScheme": {
+      "type": "string",
+      "default": "light",
+      "enum": ["light", "dark", "transparent"]
+    },
+    "iconStyle": {
+      "type": "string",
+      "default": "chevron",
+      "enum": ["chevron", "plus", "arrow"]
+    },
+    "allowMultipleOpen": {
+      "type": "boolean",
+      "default": false
+    },
+    "borderStyle": {
+      "type": "string",
+      "default": "divider",
+      "enum": ["none", "divider", "card"]
+    }
+  },
+  "providesContext": {
+    "flatwp/faqColorScheme": "colorScheme",
+    "flatwp/faqIconStyle": "iconStyle",
+    "flatwp/faqBorderStyle": "borderStyle"
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css",
+  "viewScript": "file:./view.js"
+}

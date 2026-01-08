@@ -1,0 +1,86 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/cta",
+  "version": "1.0.0",
+  "title": "Call to Action",
+  "category": "flatwp",
+  "icon": "megaphone",
+  "description": "An attention-grabbing call-to-action section with multiple layout variants.",
+  "keywords": ["cta", "call to action", "button", "banner", "conversion"],
+  "textdomain": "flatwp",
+  "attributes": {
+    "variant": {
+      "type": "string",
+      "default": "boxed",
+      "enum": ["boxed", "inline", "banner", "split"]
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "text": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Get Started"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonStyle": {
+      "type": "string",
+      "default": "solid",
+      "enum": ["solid", "outline", "ghost"]
+    },
+    "secondaryButtonText": {
+      "type": "string",
+      "default": ""
+    },
+    "secondaryButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "colorScheme": {
+      "type": "string",
+      "default": "primary",
+      "enum": ["light", "dark", "primary", "gradient"]
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center",
+      "enum": ["left", "center", "right"]
+    },
+    "gradientFrom": {
+      "type": "string",
+      "default": "#2563eb"
+    },
+    "gradientTo": {
+      "type": "string",
+      "default": "#7c3aed"
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "imageId": {
+      "type": "number",
+      "default": 0
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "className": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

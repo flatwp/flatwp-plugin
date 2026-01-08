@@ -1,0 +1,73 @@
+/**
+ * Team Member Block - Editor Styles
+ */
+
+.flatwp-team-member {
+  text-align: center;
+  padding: 1rem;
+
+  .flatwp-team-member-photo {
+    margin-bottom: 1rem;
+
+    .flatwp-team-member-photo-wrapper {
+      cursor: pointer;
+      display: inline-block;
+
+      img {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .flatwp-team-member-photo-placeholder {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        background: #e5e7eb;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+
+        span {
+          font-size: 0.75rem;
+          color: #6b7280;
+          text-align: center;
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .flatwp-team-member-info {
+    .flatwp-team-member-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .flatwp-team-member-role {
+      color: #2563eb;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .flatwp-team-member-bio {
+      color: #6b7280;
+      font-size: 0.875rem;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

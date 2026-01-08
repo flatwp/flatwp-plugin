@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/statistics",
+  "version": "1.0.0",
+  "title": "Statistics Section",
+  "category": "flatwp",
+  "icon": "chart-bar",
+  "description": "Display key statistics and metrics in a grid layout.",
+  "keywords": ["statistics", "stats", "numbers", "metrics", "counter"],
+  "textdomain": "flatwp",
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "columns": {
+      "type": "string",
+      "default": "4",
+      "enum": ["2", "3", "4"]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "className": true,
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "allowedBlocks": ["flatwp/stat-item"],
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

@@ -1,0 +1,28 @@
+/**
+ * Stat Item Block - Editor Styles
+ */
+
+.flatwp-stat-item {
+  text-align: center;
+  padding: 1rem;
+
+  .flatwp-stat-item-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2563eb;
+    margin-bottom: 0.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .flatwp-stat-item-label {
+    font-size: 1rem;
+    color: #6b7280;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/hero",
+  "version": "1.0.0",
+  "title": "Hero Section",
+  "category": "flatwp",
+  "icon": "star-filled",
+  "description": "A versatile hero section with multiple layout variants and customization options.",
+  "keywords": ["hero", "header", "banner", "landing", "cta"],
+  "textdomain": "flatwp",
+  "attributes": {
+    "variant": {
+      "type": "string",
+      "default": "centered",
+      "enum": ["minimal", "centered", "split", "gradient", "image-bg"]
+    },
+    "heading": {
+      "type": "string",
+      "default": ""
+    },
+    "subheading": {
+      "type": "string",
+      "default": ""
+    },
+    "alignment": {
+      "type": "string",
+      "default": "center",
+      "enum": ["left", "center", "right"]
+    },
+    "primaryButtonText": {
+      "type": "string",
+      "default": ""
+    },
+    "primaryButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "primaryButtonStyle": {
+      "type": "string",
+      "default": "solid",
+      "enum": ["solid", "outline", "ghost"]
+    },
+    "secondaryButtonText": {
+      "type": "string",
+      "default": ""
+    },
+    "secondaryButtonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundImageId": {
+      "type": "number",
+      "default": 0
+    },
+    "overlayOpacity": {
+      "type": "number",
+      "default": 50
+    },
+    "overlayColor": {
+      "type": "string",
+      "default": "#000000"
+    },
+    "gradientFrom": {
+      "type": "string",
+      "default": "#2563eb"
+    },
+    "gradientTo": {
+      "type": "string",
+      "default": "#7c3aed"
+    },
+    "gradientDirection": {
+      "type": "string",
+      "default": "to-r",
+      "enum": ["to-r", "to-l", "to-b", "to-t", "to-br", "to-bl"]
+    },
+    "minHeight": {
+      "type": "string",
+      "default": "80vh"
+    },
+    "colorScheme": {
+      "type": "string",
+      "default": "light",
+      "enum": ["light", "dark", "primary", "custom"]
+    },
+    "sideImageUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "sideImageId": {
+      "type": "number",
+      "default": 0
+    },
+    "imagePosition": {
+      "type": "string",
+      "default": "right",
+      "enum": ["left", "right"]
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "className": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

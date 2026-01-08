@@ -1,0 +1,77 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/card",
+  "version": "1.0.0",
+  "title": "Card",
+  "category": "flatwp",
+  "icon": "screenoptions",
+  "description": "A flexible card container with customizable styling, borders, and color schemes.",
+  "keywords": ["card", "box", "container", "panel", "content"],
+  "textdomain": "flatwp",
+  "attributes": {
+    "colorScheme": {
+      "type": "string",
+      "default": "light",
+      "enum": ["light", "dark", "primary", "gradient", "transparent"]
+    },
+    "borderRadius": {
+      "type": "string",
+      "default": "lg",
+      "enum": ["none", "sm", "md", "lg", "xl", "2xl"]
+    },
+    "borderStyle": {
+      "type": "string",
+      "default": "subtle",
+      "enum": ["none", "subtle", "prominent"]
+    },
+    "shadow": {
+      "type": "string",
+      "default": "md",
+      "enum": ["none", "sm", "md", "lg", "xl"]
+    },
+    "padding": {
+      "type": "string",
+      "default": "default",
+      "enum": ["none", "compact", "default", "relaxed"]
+    },
+    "hoverEffect": {
+      "type": "string",
+      "default": "none",
+      "enum": ["none", "lift", "glow", "border"]
+    },
+    "customBackground": {
+      "type": "string",
+      "default": ""
+    },
+    "customTextColor": {
+      "type": "string",
+      "default": ""
+    },
+    "customBorderColor": {
+      "type": "string",
+      "default": ""
+    },
+    "gradientFrom": {
+      "type": "string",
+      "default": "#2563eb"
+    },
+    "gradientTo": {
+      "type": "string",
+      "default": "#7c3aed"
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["left", "center", "right", "wide", "full"],
+    "className": true,
+    "spacing": {
+      "margin": true,
+      "padding": false
+    }
+  },
+  "allowedBlocks": true,
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

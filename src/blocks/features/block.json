@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/features",
+  "version": "1.0.0",
+  "title": "Features Grid",
+  "category": "flatwp",
+  "icon": "grid-view",
+  "description": "Display features in a responsive grid with icons",
+  "keywords": ["features", "grid", "icons", "benefits"],
+  "textdomain": "flatwp",
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "anchor": true,
+    "className": true
+  },
+  "attributes": {
+    "heading": {
+      "type": "string",
+      "default": "Everything you need"
+    },
+    "subheading": {
+      "type": "string",
+      "default": "Powerful features to help you build faster and smarter."
+    },
+    "showHeading": {
+      "type": "boolean",
+      "default": true
+    },
+    "columns": {
+      "type": "number",
+      "default": 3
+    },
+    "layout": {
+      "type": "string",
+      "default": "grid",
+      "enum": ["grid", "list", "centered"]
+    },
+    "colorScheme": {
+      "type": "string",
+      "default": "light",
+      "enum": ["light", "dark", "transparent"]
+    },
+    "iconStyle": {
+      "type": "string",
+      "default": "filled",
+      "enum": ["filled", "outlined", "minimal"]
+    },
+    "iconPosition": {
+      "type": "string",
+      "default": "top",
+      "enum": ["top", "left", "inline"]
+    }
+  },
+  "providesContext": {
+    "flatwp/featuresColorScheme": "colorScheme",
+    "flatwp/featuresIconStyle": "iconStyle",
+    "flatwp/featuresIconPosition": "iconPosition"
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

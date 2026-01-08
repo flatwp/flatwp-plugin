@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/team-member",
+  "version": "1.0.0",
+  "title": "Team Member",
+  "category": "flatwp",
+  "icon": "admin-users",
+  "description": "A single team member card with photo, name, role, and bio.",
+  "keywords": ["team", "member", "person", "staff"],
+  "textdomain": "flatwp",
+  "parent": ["flatwp/team"],
+  "attributes": {
+    "name": {
+      "type": "string",
+      "default": ""
+    },
+    "role": {
+      "type": "string",
+      "default": ""
+    },
+    "bio": {
+      "type": "string",
+      "default": ""
+    },
+    "photoUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "photoId": {
+      "type": "number",
+      "default": 0
+    },
+    "linkedin": {
+      "type": "string",
+      "default": ""
+    },
+    "twitter": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "className": true,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
+}

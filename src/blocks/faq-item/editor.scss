@@ -1,0 +1,96 @@
+/**
+ * FAQ Item Block - Editor Styles
+ */
+
+.flatwp-faq-item {
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.25rem 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    transition: opacity 150ms ease;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  &__question {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    padding-right: 1rem;
+    flex: 1;
+
+    &:focus { outline: none; }
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  }
+
+  &__content {
+    overflow: hidden;
+    transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__answer {
+    padding-bottom: 1.25rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    opacity: 0.8;
+
+    p { margin: 0; }
+
+    [data-rich-text-placeholder] {
+      opacity: 0.5;
+    }
+  }
+
+  &.is-open {
+    .flatwp-faq-item__icon {
+      transform: rotate(180deg);
+    }
+
+    .flatwp-faq-item__icon--plus {
+      transform: rotate(45deg);
+    }
+  }
+
+  // Border styling (inherits from parent context)
+  .flatwp-faq--border-divider & {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .flatwp-faq--dark.flatwp-faq--border-divider & {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .flatwp-faq--border-card & {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 0.75rem;
+    padding: 0 1.5rem;
+  }
+
+  .flatwp-faq--dark.flatwp-faq--border-card & {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}

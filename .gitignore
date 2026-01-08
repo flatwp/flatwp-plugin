@@ -1,0 +1,8 @@
+node_modules/
+vendor/
+admin-react/dist/
+admin-react/node_modules/
+build/
+releases/
+*.zip
+.DS_Store

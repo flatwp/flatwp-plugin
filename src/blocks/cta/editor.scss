@@ -1,0 +1,211 @@
+/**
+ * CTA Block - Editor Styles
+ */
+
+.flatwp-cta {
+  border-radius: 1rem;
+  overflow: hidden;
+
+  &__container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  &__content {
+    max-width: 640px;
+  }
+
+  &__heading {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+
+    @media (min-width: 768px) {
+      font-size: 2.5rem;
+    }
+
+    &:focus { outline: none; }
+  }
+
+  &__text {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+    line-height: 1.6;
+
+    &:focus { outline: none; }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 200ms ease;
+
+    span:focus { outline: none; }
+
+    &--solid {
+      background: #2563eb;
+      color: white;
+      &:hover { background: #1d4ed8; }
+    }
+
+    &--outline {
+      background: transparent;
+      border: 2px solid currentColor;
+      &:hover { background: rgba(255, 255, 255, 0.1); }
+    }
+
+    &--ghost {
+      background: transparent;
+      &:hover { background: rgba(255, 255, 255, 0.1); }
+    }
+  }
+
+  // Color schemes
+  &--light {
+    background: #f9fafb;
+    color: #111827;
+
+    .flatwp-cta__text { color: #4b5563; }
+    .flatwp-cta__button--outline { border-color: #2563eb; color: #2563eb; }
+  }
+
+  &--dark {
+    background: #111827;
+    color: #f9fafb;
+
+    .flatwp-cta__text { color: #9ca3af; }
+    .flatwp-cta__button--solid { background: white; color: #111827; }
+  }
+
+  &--primary {
+    background: #2563eb;
+    color: white;
+
+    .flatwp-cta__button--solid { background: white; color: #2563eb; }
+    .flatwp-cta__button--outline { border-color: white; }
+  }
+
+  &--gradient {
+    color: white;
+
+    .flatwp-cta__button--solid { background: white; color: #2563eb; }
+    .flatwp-cta__button--outline { border-color: white; }
+  }
+
+  // Variants
+  &--boxed {
+    .flatwp-cta__container {
+      text-align: center;
+    }
+    .flatwp-cta__content {
+      margin: 0 auto;
+    }
+    .flatwp-cta__buttons {
+      justify-content: center;
+    }
+  }
+
+  &--inline {
+    .flatwp-cta__container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .flatwp-cta__content {
+      flex: 1;
+      min-width: 300px;
+    }
+    .flatwp-cta__text {
+      margin-bottom: 0;
+    }
+  }
+
+  &--banner {
+    border-radius: 0;
+    .flatwp-cta__container {
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      text-align: center;
+    }
+    .flatwp-cta__heading {
+      font-size: 1.25rem;
+      margin-bottom: 0;
+    }
+    .flatwp-cta__text {
+      display: none;
+    }
+  }
+
+  &--split {
+    .flatwp-cta__container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: center;
+
+      @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .flatwp-cta__image {
+      .flatwp-cta__image-wrapper {
+        cursor: pointer;
+
+        img {
+          width: 100%;
+          border-radius: 0.75rem;
+        }
+      }
+
+      .flatwp-cta__image-placeholder {
+        aspect-ratio: 4/3;
+        background: rgba(0, 0, 0, 0.1);
+        border: 2px dashed rgba(0, 0, 0, 0.2);
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        span {
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+
+  // Alignment
+  &--align-left {
+    .flatwp-cta__content { text-align: left; }
+    .flatwp-cta__buttons { justify-content: flex-start; }
+  }
+
+  &--align-center {
+    .flatwp-cta__content { text-align: center; margin: 0 auto; }
+    .flatwp-cta__buttons { justify-content: center; }
+  }
+
+  &--align-right {
+    .flatwp-cta__content { text-align: right; margin-left: auto; }
+    .flatwp-cta__buttons { justify-content: flex-end; }
+  }
+}

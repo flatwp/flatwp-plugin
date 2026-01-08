@@ -1,0 +1,52 @@
+/**
+ * FlatWP Design Tokens
+ * Shared design system variables for all FlatWP blocks
+ */
+
+// Primary Colors
+\$flatwp-primary-50: #eff6ff;
+\$flatwp-primary-100: #dbeafe;
+\$flatwp-primary-500: #3b82f6;
+\$flatwp-primary-600: #2563eb;
+\$flatwp-primary-700: #1d4ed8;
+\$flatwp-primary-800: #1e40af;
+
+// Neutral Colors
+\$flatwp-gray-50: #f9fafb;
+\$flatwp-gray-100: #f3f4f6;
+\$flatwp-gray-200: #e5e7eb;
+\$flatwp-gray-300: #d1d5db;
+\$flatwp-gray-400: #9ca3af;
+\$flatwp-gray-500: #6b7280;
+\$flatwp-gray-600: #4b5563;
+\$flatwp-gray-700: #374151;
+\$flatwp-gray-800: #1f2937;
+\$flatwp-gray-900: #111827;
+
+// Spacing
+\$flatwp-space-2: 0.5rem;
+\$flatwp-space-3: 0.75rem;
+\$flatwp-space-4: 1rem;
+\$flatwp-space-6: 1.5rem;
+\$flatwp-space-8: 2rem;
+\$flatwp-space-12: 3rem;
+\$flatwp-space-16: 4rem;
+\$flatwp-space-20: 5rem;
+
+// Border Radius
+\$flatwp-radius-md: 0.5rem;
+\$flatwp-radius-lg: 0.75rem;
+\$flatwp-radius-xl: 1rem;
+\$flatwp-radius-2xl: 1.5rem;
+\$flatwp-radius-full: 9999px;
+
+// Shadows
+\$flatwp-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+\$flatwp-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+\$flatwp-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+\$flatwp-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+// Transitions
+\$flatwp-transition-fast: 150ms ease;
+\$flatwp-transition-base: 200ms ease;
+\$flatwp-transition-slow: 300ms ease;

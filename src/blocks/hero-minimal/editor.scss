@@ -1,0 +1,77 @@
+/**
+ * Hero Minimal Block - Editor Styles
+ */
+
+.flatwp-hero-minimal {
+  padding: 4rem 2rem;
+
+  &.align-left {
+    text-align: left;
+
+    .flatwp-hero-minimal-content {
+      align-items: flex-start;
+    }
+  }
+
+  &.align-center {
+    text-align: center;
+
+    .flatwp-hero-minimal-content {
+      align-items: center;
+    }
+  }
+
+  &.align-right {
+    text-align: right;
+
+    .flatwp-hero-minimal-content {
+      align-items: flex-end;
+    }
+  }
+
+  .flatwp-hero-minimal-content {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .flatwp-hero-minimal-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .flatwp-hero-minimal-description {
+    font-size: 1.25rem;
+    color: #666;
+    margin-bottom: 2rem;
+    max-width: 600px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .flatwp-hero-minimal-cta {
+    .flatwp-hero-minimal-button {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: #2563eb;
+      color: white;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:focus {
+        outline: 2px solid #2563eb;
+        outline-offset: 2px;
+      }
+    }
+  }
+}

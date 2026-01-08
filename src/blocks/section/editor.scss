@@ -1,0 +1,115 @@
+/**
+ * Section Block - Editor Styles
+ */
+
+.flatwp-section {
+  position: relative;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  &--has-bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+
+    &--narrow { max-width: 768px; }
+    &--default { max-width: 1024px; }
+    &--wide { max-width: 1280px; }
+    &--full { max-width: none; }
+  }
+
+  // Padding Top
+  &--pt-none { padding-top: 0; }
+  &--pt-small { padding-top: 2rem; }
+  &--pt-medium { padding-top: 4rem; }
+  &--pt-large { padding-top: 6rem; }
+  &--pt-xlarge { padding-top: 8rem; }
+
+  // Padding Bottom
+  &--pb-none { padding-bottom: 0; }
+  &--pb-small { padding-bottom: 2rem; }
+  &--pb-medium { padding-bottom: 4rem; }
+  &--pb-large { padding-bottom: 6rem; }
+  &--pb-xlarge { padding-bottom: 8rem; }
+
+  // Color Schemes
+  &--transparent {
+    background-color: transparent;
+  }
+
+  &--light {
+    background-color: #f9fafb;
+    color: #111827;
+
+    .flatwp-section__overlay {
+      background-color: #f9fafb;
+    }
+  }
+
+  &--dark {
+    background-color: #111827;
+    color: #f9fafb;
+
+    .flatwp-section__overlay {
+      background-color: #111827;
+    }
+  }
+
+  &--primary {
+    background-color: #2563eb;
+    color: #ffffff;
+
+    .flatwp-section__overlay {
+      background-color: #2563eb;
+    }
+  }
+
+  &--gradient {
+    color: #ffffff;
+  }
+
+  // Dividers (visual indicator in editor)
+  &--divider-top-wave,
+  &--divider-top-curve,
+  &--divider-top-triangle,
+  &--divider-top-slant {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.05), transparent);
+      pointer-events: none;
+    }
+  }
+
+  &--divider-bottom-wave,
+  &--divider-bottom-curve,
+  &--divider-bottom-triangle,
+  &--divider-bottom-slant {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: linear-gradient(to top, rgba(0,0,0,0.05), transparent);
+      pointer-events: none;
+    }
+  }
+}

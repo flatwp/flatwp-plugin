@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "flatwp/feature-item",
+  "version": "1.0.0",
+  "title": "Feature Item",
+  "category": "flatwp",
+  "icon": "star-filled",
+  "description": "A single feature with icon, title, and description",
+  "keywords": ["feature", "icon", "benefit"],
+  "textdomain": "flatwp",
+  "parent": ["flatwp/features"],
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "usesContext": [
+    "flatwp/featuresColorScheme",
+    "flatwp/featuresIconStyle",
+    "flatwp/featuresIconPosition"
+  ],
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "default": "star"
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css"
+}
