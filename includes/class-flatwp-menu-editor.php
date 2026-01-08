@@ -8,6 +8,11 @@
  * @package FlatWP
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class FlatWP_Menu_Editor {
 	/**
 	 * Initialize menu editor enhancements
@@ -39,7 +44,7 @@ class FlatWP_Menu_Editor {
 		<div class="field-flatwp-icon description-wide">
 			<p class="description">
 				<label for="edit-menu-item-flatwp-icon-<?php echo esc_attr( $item_id ); ?>">
-					<?php _e( 'Icon (Lucide)', 'flatwp' ); ?><br />
+					<?php _e( 'Icon (Lucide)', 'flatwp-wordpress-connector' ); ?><br />
 					<input
 						type="text"
 						id="edit-menu-item-flatwp-icon-<?php echo esc_attr( $item_id ); ?>"
@@ -58,7 +63,7 @@ class FlatWP_Menu_Editor {
 		<div class="field-flatwp-badge description-wide">
 			<p class="description">
 				<label for="edit-menu-item-flatwp-badge-<?php echo esc_attr( $item_id ); ?>">
-					<?php _e( 'Badge Text', 'flatwp' ); ?><br />
+					<?php _e( 'Badge Text', 'flatwp-wordpress-connector' ); ?><br />
 					<input
 						type="text"
 						id="edit-menu-item-flatwp-badge-<?php echo esc_attr( $item_id ); ?>"

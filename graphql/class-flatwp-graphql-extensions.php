@@ -137,12 +137,12 @@ class FlatWP_GraphQL_Extensions {
 		?>
 		<div class="notice notice-warning">
 			<p>
-				<strong><?php esc_html_e( 'FlatWP Companion:', 'flatwp' ); ?></strong>
+				<strong><?php esc_html_e( 'FlatWP Companion:', 'flatwp-wordpress-connector' ); ?></strong>
 				<?php
 				printf(
 					/* translators: %s: WPGraphQL plugin link */
-					esc_html__( 'WPGraphQL plugin is required for GraphQL features. %s', 'flatwp' ),
-					'<a href="https://wordpress.org/plugins/wp-graphql/" target="_blank">' . esc_html__( 'Install WPGraphQL', 'flatwp' ) . '</a>'
+					esc_html__( 'WPGraphQL plugin is required for GraphQL features. %s', 'flatwp-wordpress-connector' ),
+					'<a href="https://wordpress.org/plugins/wp-graphql/" target="_blank">' . esc_html__( 'Install WPGraphQL', 'flatwp-wordpress-connector' ) . '</a>'
 				);
 				?>
 			</p>
@@ -166,84 +166,84 @@ class FlatWP_GraphQL_Extensions {
 
 		// Register SEO type.
 		register_graphql_object_type( 'SEOMetadata', array(
-			'description' => __( 'SEO metadata for posts and pages', 'flatwp' ),
+			'description' => __( 'SEO metadata for posts and pages', 'flatwp-wordpress-connector' ),
 			'fields'      => array(
 				'title'       => array(
 					'type'        => 'String',
-					'description' => __( 'SEO title', 'flatwp' ),
+					'description' => __( 'SEO title', 'flatwp-wordpress-connector' ),
 				),
 				'description' => array(
 					'type'        => 'String',
-					'description' => __( 'SEO description', 'flatwp' ),
+					'description' => __( 'SEO description', 'flatwp-wordpress-connector' ),
 				),
 				'canonical'   => array(
 					'type'        => 'String',
-					'description' => __( 'Canonical URL', 'flatwp' ),
+					'description' => __( 'Canonical URL', 'flatwp-wordpress-connector' ),
 				),
 				'robots'      => array(
 					'type'        => 'String',
-					'description' => __( 'Robots meta tag', 'flatwp' ),
+					'description' => __( 'Robots meta tag', 'flatwp-wordpress-connector' ),
 				),
 			),
 		) );
 
 		// Register Open Graph type.
 		register_graphql_object_type( 'OpenGraphMetadata', array(
-			'description' => __( 'Open Graph metadata', 'flatwp' ),
+			'description' => __( 'Open Graph metadata', 'flatwp-wordpress-connector' ),
 			'fields'      => array(
 				'title'       => array(
 					'type'        => 'String',
-					'description' => __( 'Open Graph title', 'flatwp' ),
+					'description' => __( 'Open Graph title', 'flatwp-wordpress-connector' ),
 				),
 				'description' => array(
 					'type'        => 'String',
-					'description' => __( 'Open Graph description', 'flatwp' ),
+					'description' => __( 'Open Graph description', 'flatwp-wordpress-connector' ),
 				),
 				'image'       => array(
 					'type'        => 'String',
-					'description' => __( 'Open Graph image URL', 'flatwp' ),
+					'description' => __( 'Open Graph image URL', 'flatwp-wordpress-connector' ),
 				),
 			),
 		) );
 
 		// Register Twitter Card type.
 		register_graphql_object_type( 'TwitterCardMetadata', array(
-			'description' => __( 'Twitter Card metadata', 'flatwp' ),
+			'description' => __( 'Twitter Card metadata', 'flatwp-wordpress-connector' ),
 			'fields'      => array(
 				'title'       => array(
 					'type'        => 'String',
-					'description' => __( 'Twitter Card title', 'flatwp' ),
+					'description' => __( 'Twitter Card title', 'flatwp-wordpress-connector' ),
 				),
 				'description' => array(
 					'type'        => 'String',
-					'description' => __( 'Twitter Card description', 'flatwp' ),
+					'description' => __( 'Twitter Card description', 'flatwp-wordpress-connector' ),
 				),
 				'image'       => array(
 					'type'        => 'String',
-					'description' => __( 'Twitter Card image URL', 'flatwp' ),
+					'description' => __( 'Twitter Card image URL', 'flatwp-wordpress-connector' ),
 				),
 			),
 		) );
 
 		// Register complete SEO data type.
 		register_graphql_object_type( 'SEO', array(
-			'description' => __( 'Complete SEO metadata', 'flatwp' ),
+			'description' => __( 'Complete SEO metadata', 'flatwp-wordpress-connector' ),
 			'fields'      => array(
 				'meta'    => array(
 					'type'        => 'SEOMetadata',
-					'description' => __( 'Basic SEO metadata', 'flatwp' ),
+					'description' => __( 'Basic SEO metadata', 'flatwp-wordpress-connector' ),
 				),
 				'og'      => array(
 					'type'        => 'OpenGraphMetadata',
-					'description' => __( 'Open Graph metadata', 'flatwp' ),
+					'description' => __( 'Open Graph metadata', 'flatwp-wordpress-connector' ),
 				),
 				'twitter' => array(
 					'type'        => 'TwitterCardMetadata',
-					'description' => __( 'Twitter Card metadata', 'flatwp' ),
+					'description' => __( 'Twitter Card metadata', 'flatwp-wordpress-connector' ),
 				),
 				'schema'  => array(
 					'type'        => 'String',
-					'description' => __( 'JSON-LD structured data', 'flatwp' ),
+					'description' => __( 'JSON-LD structured data', 'flatwp-wordpress-connector' ),
 				),
 			),
 		) );
@@ -255,7 +255,7 @@ class FlatWP_GraphQL_Extensions {
 
 			register_graphql_field( $graphql_type, 'seo', array(
 				'type'        => 'SEO',
-				'description' => __( 'SEO metadata from installed SEO plugin or defaults', 'flatwp' ),
+				'description' => __( 'SEO metadata from installed SEO plugin or defaults', 'flatwp-wordpress-connector' ),
 				'resolve'     => function( $post ) {
 					$seo_integration = flatwp()->seo_integration;
 					if ( ! $seo_integration ) {
@@ -304,7 +304,7 @@ class FlatWP_GraphQL_Extensions {
 		// Register boolean field for featured status.
 		register_graphql_field( 'Post', 'isFeatured', array(
 			'type'        => 'Boolean',
-			'description' => __( 'Whether this post is marked as featured', 'flatwp' ),
+			'description' => __( 'Whether this post is marked as featured', 'flatwp-wordpress-connector' ),
 			'resolve'     => function( $post ) {
 				return (bool) get_post_meta( $post->ID, '_is_featured', true );
 			},
@@ -327,7 +327,7 @@ class FlatWP_GraphQL_Extensions {
 
 			register_graphql_field( $graphql_type, 'revalidateTime', array(
 				'type'        => 'Int',
-				'description' => __( 'ISR revalidate time in seconds for Next.js caching', 'flatwp' ),
+				'description' => __( 'ISR revalidate time in seconds for Next.js caching', 'flatwp-wordpress-connector' ),
 				'resolve'     => function( $post ) use ( $cache_manager ) {
 					return $cache_manager->get_revalidate_time( $post->ID, get_post_type( $post->ID ) );
 				},
@@ -346,27 +346,27 @@ class FlatWP_GraphQL_Extensions {
 
 		// Register FlatWPPageSettings type.
 		register_graphql_object_type( 'FlatWPPageSettings', array(
-			'description' => __( 'FlatWP page-specific settings', 'flatwp' ),
+			'description' => __( 'FlatWP page-specific settings', 'flatwp-wordpress-connector' ),
 			'fields'      => array(
 				'hideTitle' => array(
 					'type'        => 'Boolean',
-					'description' => __( 'Whether to hide the page title', 'flatwp' ),
+					'description' => __( 'Whether to hide the page title', 'flatwp-wordpress-connector' ),
 				),
 				'containerWidth' => array(
 					'type'        => 'String',
-					'description' => __( 'Container width setting: default, contained, or full-width', 'flatwp' ),
+					'description' => __( 'Container width setting: default, contained, or full-width', 'flatwp-wordpress-connector' ),
 				),
 				'hideHeader' => array(
 					'type'        => 'Boolean',
-					'description' => __( 'Whether to hide the site header', 'flatwp' ),
+					'description' => __( 'Whether to hide the site header', 'flatwp-wordpress-connector' ),
 				),
 				'hideFooter' => array(
 					'type'        => 'Boolean',
-					'description' => __( 'Whether to hide the site footer', 'flatwp' ),
+					'description' => __( 'Whether to hide the site footer', 'flatwp-wordpress-connector' ),
 				),
 				'customCssClass' => array(
 					'type'        => 'String',
-					'description' => __( 'Custom CSS classes for the page', 'flatwp' ),
+					'description' => __( 'Custom CSS classes for the page', 'flatwp-wordpress-connector' ),
 				),
 			),
 		) );
@@ -374,7 +374,7 @@ class FlatWP_GraphQL_Extensions {
 		// Add flatwpSettings field to Page type.
 		register_graphql_field( 'Page', 'flatwpSettings', array(
 			'type'        => 'FlatWPPageSettings',
-			'description' => __( 'FlatWP page settings', 'flatwp' ),
+			'description' => __( 'FlatWP page settings', 'flatwp-wordpress-connector' ),
 			'resolve'     => function( $page ) use ( $page_settings ) {
 				return $page_settings->get_settings( $page->ID );
 			},
@@ -391,38 +391,38 @@ class FlatWP_GraphQL_Extensions {
 	 */
 	public function register_settings_query() {
 		register_graphql_object_type( 'FlatWPSettings', array(
-			'description' => __( 'FlatWP plugin settings', 'flatwp' ),
+			'description' => __( 'FlatWP plugin settings', 'flatwp-wordpress-connector' ),
 			'fields'      => array(
 				'version'           => array(
 					'type'        => 'String',
-					'description' => __( 'Plugin version', 'flatwp' ),
+					'description' => __( 'Plugin version', 'flatwp-wordpress-connector' ),
 				),
 				'enablePreview'     => array(
 					'type'        => 'Boolean',
-					'description' => __( 'Whether preview mode is enabled', 'flatwp' ),
+					'description' => __( 'Whether preview mode is enabled', 'flatwp-wordpress-connector' ),
 				),
 				'enableBlurPlaceholder' => array(
 					'type'        => 'Boolean',
-					'description' => __( 'Whether blur placeholders are enabled', 'flatwp' ),
+					'description' => __( 'Whether blur placeholders are enabled', 'flatwp-wordpress-connector' ),
 				),
 				'enableSearchIndex' => array(
 					'type'        => 'Boolean',
-					'description' => __( 'Whether search index is enabled', 'flatwp' ),
+					'description' => __( 'Whether search index is enabled', 'flatwp-wordpress-connector' ),
 				),
 				'searchIndexUrl'    => array(
 					'type'        => 'String',
-					'description' => __( 'URL to search index JSON file', 'flatwp' ),
+					'description' => __( 'URL to search index JSON file', 'flatwp-wordpress-connector' ),
 				),
 				'seoPlugin'         => array(
 					'type'        => 'String',
-					'description' => __( 'Active SEO plugin', 'flatwp' ),
+					'description' => __( 'Active SEO plugin', 'flatwp-wordpress-connector' ),
 				),
 			),
 		) );
 
 		register_graphql_field( 'RootQuery', 'flatwpSettings', array(
 			'type'        => 'FlatWPSettings',
-			'description' => __( 'Get FlatWP plugin settings', 'flatwp' ),
+			'description' => __( 'Get FlatWP plugin settings', 'flatwp-wordpress-connector' ),
 			'resolve'     => function() {
 				$settings = array(
 					'version'              => FLATWP_VERSION,
@@ -460,34 +460,34 @@ class FlatWP_GraphQL_Extensions {
 		}
 
 		register_graphql_object_type( 'SearchIndexMetadata', array(
-			'description' => __( 'Search index metadata', 'flatwp' ),
+			'description' => __( 'Search index metadata', 'flatwp-wordpress-connector' ),
 			'fields'      => array(
 				'url'       => array(
 					'type'        => 'String',
-					'description' => __( 'URL to search index JSON file', 'flatwp' ),
+					'description' => __( 'URL to search index JSON file', 'flatwp-wordpress-connector' ),
 				),
 				'version'   => array(
 					'type'        => 'String',
-					'description' => __( 'Index version/timestamp', 'flatwp' ),
+					'description' => __( 'Index version/timestamp', 'flatwp-wordpress-connector' ),
 				),
 				'generated' => array(
 					'type'        => 'String',
-					'description' => __( 'When the index was generated', 'flatwp' ),
+					'description' => __( 'When the index was generated', 'flatwp-wordpress-connector' ),
 				),
 				'postCount' => array(
 					'type'        => 'Int',
-					'description' => __( 'Number of posts in the index', 'flatwp' ),
+					'description' => __( 'Number of posts in the index', 'flatwp-wordpress-connector' ),
 				),
 				'fileSize'  => array(
 					'type'        => 'Int',
-					'description' => __( 'Index file size in bytes', 'flatwp' ),
+					'description' => __( 'Index file size in bytes', 'flatwp-wordpress-connector' ),
 				),
 			),
 		) );
 
 		register_graphql_field( 'RootQuery', 'searchIndexMetadata', array(
 			'type'        => 'SearchIndexMetadata',
-			'description' => __( 'Get search index metadata', 'flatwp' ),
+			'description' => __( 'Get search index metadata', 'flatwp-wordpress-connector' ),
 			'resolve'     => function() {
 				$search_index = flatwp()->search_index;
 				if ( ! $search_index ) {

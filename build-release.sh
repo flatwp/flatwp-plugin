@@ -56,8 +56,8 @@ cp -r graphql "${RELEASE_DIR}/"
 cp -r assets "${RELEASE_DIR}/"
 
 # Create empty acf-json directory (for backward compatibility, but no JSON files)
+# Note: Don't include .gitkeep as WordPress plugin check flags hidden files
 mkdir -p "${RELEASE_DIR}/acf-json"
-touch "${RELEASE_DIR}/acf-json/.gitkeep"
 
 cp -r vendor "${RELEASE_DIR}/"
 

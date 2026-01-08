@@ -7,6 +7,11 @@
  * @package FlatWP
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class FlatWP_Menus_GraphQL {
 	/**
 	 * Initialize GraphQL integration

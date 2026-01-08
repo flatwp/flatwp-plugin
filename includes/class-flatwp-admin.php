@@ -21,8 +21,8 @@ class FlatWP_Admin {
 
 	public function register_admin_pages() {
 		add_menu_page(
-			__( 'FlatWP', 'flatwp' ),
-			__( 'FlatWP', 'flatwp' ),
+			__( 'FlatWP', 'flatwp-wordpress-connector' ),
+			__( 'FlatWP', 'flatwp-wordpress-connector' ),
 			'manage_options',
 			'flatwp',
 			array( $this, 'render_admin_app' ),
@@ -33,7 +33,7 @@ class FlatWP_Admin {
 
 	public function enqueue_admin_app( $hook ) {
 		// Only load on FlatWP admin pages
-		if ( strpos( $hook, 'flatwp' ) === false ) {
+		if ( strpos( $hook, 'flatwp-wordpress-connector' ) === false ) {
 			return;
 		}
 
@@ -47,8 +47,8 @@ class FlatWP_Admin {
 					?>
 					<div class="notice notice-error">
 						<p>
-							<strong><?php esc_html_e( 'FlatWP:', 'flatwp' ); ?></strong>
-							<?php esc_html_e( 'React admin app not compiled. Please run: cd admin-react && npm install && npm run build', 'flatwp' ); ?>
+							<strong><?php esc_html_e( 'FlatWP:', 'flatwp-wordpress-connector' ); ?></strong>
+							<?php esc_html_e( 'React admin app not compiled. Please run: cd admin-react && npm install && npm run build', 'flatwp-wordpress-connector' ); ?>
 						</p>
 					</div>
 					<?php

@@ -42,14 +42,14 @@ class FlatWP_ACF_Fields {
 	private function define_templates() {
 		$this->templates = array(
 			'homepage' => array(
-				'label'       => __( 'Homepage Template', 'flatwp' ),
-				'description' => __( 'Hero section, features grid, testimonials, and call-to-action', 'flatwp' ),
+				'label'       => __( 'Homepage Template', 'flatwp-wordpress-connector' ),
+				'description' => __( 'Hero section, features grid, testimonials, and call-to-action', 'flatwp-wordpress-connector' ),
 				'icon'        => '🏠',
 				'blocks'      => array( 'hero_centered', 'features_grid', 'testimonials', 'cta_boxed' ),
 			),
 			'landing' => array(
-				'label'       => __( 'Landing Page Template', 'flatwp' ),
-				'description' => __( 'Split hero, content section, pricing, and call-to-action', 'flatwp' ),
+				'label'       => __( 'Landing Page Template', 'flatwp-wordpress-connector' ),
+				'description' => __( 'Split hero, content section, pricing, and call-to-action', 'flatwp-wordpress-connector' ),
 				'icon'        => '🚀',
 				'blocks'      => array( 'hero_split', 'content_section', 'pricing', 'cta_simple' ),
 			),
@@ -95,12 +95,12 @@ class FlatWP_ACF_Fields {
 		?>
 		<div class="notice notice-warning">
 			<p>
-				<strong><?php esc_html_e( 'FlatWP Companion:', 'flatwp' ); ?></strong>
+				<strong><?php esc_html_e( 'FlatWP Companion:', 'flatwp-wordpress-connector' ); ?></strong>
 				<?php
 				printf(
 					/* translators: %s: ACF plugin link */
-					esc_html__( 'Advanced Custom Fields Pro is required for the block-based page builder. %s', 'flatwp' ),
-					'<a href="https://www.advancedcustomfields.com/pro/" target="_blank">' . esc_html__( 'Get ACF Pro', 'flatwp' ) . '</a>'
+					esc_html__( 'Advanced Custom Fields Pro is required for the block-based page builder. %s', 'flatwp-wordpress-connector' ),
+					'<a href="https://www.advancedcustomfields.com/pro/" target="_blank">' . esc_html__( 'Get ACF Pro', 'flatwp-wordpress-connector' ) . '</a>'
 				);
 				?>
 			</p>
@@ -115,15 +115,15 @@ class FlatWP_ACF_Fields {
 		// Register the main Flexible Content field.
 		acf_add_local_field_group( array(
 			'key' => 'group_flatwp_flexible_content',
-			'title' => __( 'Page Builder', 'flatwp' ),
+			'title' => __( 'Page Builder', 'flatwp-wordpress-connector' ),
 			'fields' => array(
 				array(
 					'key' => 'field_flatwp_flexible_content',
-					'label' => __( 'Content Blocks', 'flatwp' ),
+					'label' => __( 'Content Blocks', 'flatwp-wordpress-connector' ),
 					'name' => 'flexible_content',
 					'type' => 'flexible_content',
-					'instructions' => __( 'Add and arrange content blocks to build your page layout.', 'flatwp' ),
-					'button_label' => __( 'Add Content Block', 'flatwp' ),
+					'instructions' => __( 'Add and arrange content blocks to build your page layout.', 'flatwp-wordpress-connector' ),
+					'button_label' => __( 'Add Content Block', 'flatwp-wordpress-connector' ),
 					'layouts' => $this->get_block_layouts(),
 				),
 			),
@@ -150,15 +150,15 @@ class FlatWP_ACF_Fields {
 	public function register_sidebar_blocks_field() {
 		acf_add_local_field_group( array(
 			'key' => 'group_flatwp_sidebar_blocks',
-			'title' => __( 'Page Sidebar Content', 'flatwp' ),
+			'title' => __( 'Page Sidebar Content', 'flatwp-wordpress-connector' ),
 			'fields' => array(
 				array(
 					'key' => 'field_flatwp_sidebar_blocks',
-					'label' => __( 'Sidebar Blocks', 'flatwp' ),
+					'label' => __( 'Sidebar Blocks', 'flatwp-wordpress-connector' ),
 					'name' => 'sidebar_blocks',
 					'type' => 'flexible_content',
-					'instructions' => __( 'Add content blocks for the page sidebar. These will only display if "Show Sidebar" is enabled in FlatWP Page Settings.', 'flatwp' ),
-					'button_label' => __( 'Add Sidebar Block', 'flatwp' ),
+					'instructions' => __( 'Add content blocks for the page sidebar. These will only display if "Show Sidebar" is enabled in FlatWP Page Settings.', 'flatwp-wordpress-connector' ),
+					'button_label' => __( 'Add Sidebar Block', 'flatwp-wordpress-connector' ),
 					'layouts' => $this->get_sidebar_block_layouts(),
 				),
 			),
@@ -190,48 +190,48 @@ class FlatWP_ACF_Fields {
 			'hero_centered' => array(
 				'key' => 'layout_hero_centered',
 				'name' => 'hero_centered',
-				'label' => '🎯 ' . __( 'Hero - Centered', 'flatwp' ),
+				'label' => '🎯 ' . __( 'Hero - Centered', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_hero_centered_heading',
-						'label' => __( 'Heading', 'flatwp' ),
+						'label' => __( 'Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
-						'instructions' => __( 'Main headline (recommended: 40-60 characters)', 'flatwp' ),
+						'instructions' => __( 'Main headline (recommended: 40-60 characters)', 'flatwp-wordpress-connector' ),
 						'required' => 1,
 						'maxlength' => 100,
 					),
 					array(
 						'key' => 'field_hero_centered_subheading',
-						'label' => __( 'Subheading', 'flatwp' ),
+						'label' => __( 'Subheading', 'flatwp-wordpress-connector' ),
 						'name' => 'subheading',
 						'type' => 'textarea',
-						'instructions' => __( 'Supporting text (recommended: 100-150 characters)', 'flatwp' ),
+						'instructions' => __( 'Supporting text (recommended: 100-150 characters)', 'flatwp-wordpress-connector' ),
 						'rows' => 3,
 						'maxlength' => 200,
 					),
 					array(
 						'key' => 'field_hero_centered_cta_text',
-						'label' => __( 'CTA Button Text', 'flatwp' ),
+						'label' => __( 'CTA Button Text', 'flatwp-wordpress-connector' ),
 						'name' => 'cta_text',
 						'type' => 'text',
-						'instructions' => __( 'Button label (e.g., "Get Started", "Learn More")', 'flatwp' ),
+						'instructions' => __( 'Button label (e.g., "Get Started", "Learn More")', 'flatwp-wordpress-connector' ),
 						'maxlength' => 30,
 					),
 					array(
 						'key' => 'field_hero_centered_cta_url',
-						'label' => __( 'CTA Button URL', 'flatwp' ),
+						'label' => __( 'CTA Button URL', 'flatwp-wordpress-connector' ),
 						'name' => 'cta_url',
 						'type' => 'url',
-						'instructions' => __( 'Where the button links to', 'flatwp' ),
+						'instructions' => __( 'Where the button links to', 'flatwp-wordpress-connector' ),
 					),
 					array(
 						'key' => 'field_hero_centered_background_image',
-						'label' => __( 'Background Image (Optional)', 'flatwp' ),
+						'label' => __( 'Background Image (Optional)', 'flatwp-wordpress-connector' ),
 						'name' => 'background_image',
 						'type' => 'image',
-						'instructions' => __( 'Recommended size: 1920x1080px', 'flatwp' ),
+						'instructions' => __( 'Recommended size: 1920x1080px', 'flatwp-wordpress-connector' ),
 						'return_format' => 'array',
 						'preview_size' => 'medium',
 					),
@@ -242,12 +242,12 @@ class FlatWP_ACF_Fields {
 			'hero_split' => array(
 				'key' => 'layout_hero_split',
 				'name' => 'hero_split',
-				'label' => '📸 ' . __( 'Hero - Split with Image', 'flatwp' ),
+				'label' => '📸 ' . __( 'Hero - Split with Image', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_hero_split_heading',
-						'label' => __( 'Heading', 'flatwp' ),
+						'label' => __( 'Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
 						'required' => 1,
@@ -255,7 +255,7 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_hero_split_subheading',
-						'label' => __( 'Subheading', 'flatwp' ),
+						'label' => __( 'Subheading', 'flatwp-wordpress-connector' ),
 						'name' => 'subheading',
 						'type' => 'textarea',
 						'rows' => 3,
@@ -263,35 +263,35 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_hero_split_image',
-						'label' => __( 'Image', 'flatwp' ),
+						'label' => __( 'Image', 'flatwp-wordpress-connector' ),
 						'name' => 'image',
 						'type' => 'image',
-						'instructions' => __( 'Recommended size: 800x600px', 'flatwp' ),
+						'instructions' => __( 'Recommended size: 800x600px', 'flatwp-wordpress-connector' ),
 						'required' => 1,
 						'return_format' => 'array',
 						'preview_size' => 'medium',
 					),
 					array(
 						'key' => 'field_hero_split_image_position',
-						'label' => __( 'Image Position', 'flatwp' ),
+						'label' => __( 'Image Position', 'flatwp-wordpress-connector' ),
 						'name' => 'image_position',
 						'type' => 'select',
 						'choices' => array(
-							'left' => __( 'Left', 'flatwp' ),
-							'right' => __( 'Right', 'flatwp' ),
+							'left' => __( 'Left', 'flatwp-wordpress-connector' ),
+							'right' => __( 'Right', 'flatwp-wordpress-connector' ),
 						),
 						'default_value' => 'right',
 					),
 					array(
 						'key' => 'field_hero_split_cta_text',
-						'label' => __( 'CTA Button Text', 'flatwp' ),
+						'label' => __( 'CTA Button Text', 'flatwp-wordpress-connector' ),
 						'name' => 'cta_text',
 						'type' => 'text',
 						'maxlength' => 30,
 					),
 					array(
 						'key' => 'field_hero_split_cta_url',
-						'label' => __( 'CTA Button URL', 'flatwp' ),
+						'label' => __( 'CTA Button URL', 'flatwp-wordpress-connector' ),
 						'name' => 'cta_url',
 						'type' => 'url',
 					),
@@ -302,19 +302,19 @@ class FlatWP_ACF_Fields {
 			'features_grid' => array(
 				'key' => 'layout_features_grid',
 				'name' => 'features_grid',
-				'label' => '⚡ ' . __( 'Features Grid', 'flatwp' ),
+				'label' => '⚡ ' . __( 'Features Grid', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_features_heading',
-						'label' => __( 'Section Heading', 'flatwp' ),
+						'label' => __( 'Section Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
 						'maxlength' => 100,
 					),
 					array(
 						'key' => 'field_features_subheading',
-						'label' => __( 'Section Subheading', 'flatwp' ),
+						'label' => __( 'Section Subheading', 'flatwp-wordpress-connector' ),
 						'name' => 'subheading',
 						'type' => 'textarea',
 						'rows' => 2,
@@ -322,24 +322,24 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_features_items',
-						'label' => __( 'Features', 'flatwp' ),
+						'label' => __( 'Features', 'flatwp-wordpress-connector' ),
 						'name' => 'features',
 						'type' => 'repeater',
-						'instructions' => __( 'Add 3-6 features for best visual balance', 'flatwp' ),
+						'instructions' => __( 'Add 3-6 features for best visual balance', 'flatwp-wordpress-connector' ),
 						'layout' => 'block',
-						'button_label' => __( 'Add Feature', 'flatwp' ),
+						'button_label' => __( 'Add Feature', 'flatwp-wordpress-connector' ),
 						'sub_fields' => array(
 							array(
 								'key' => 'field_feature_icon',
-								'label' => __( 'Icon (Emoji)', 'flatwp' ),
+								'label' => __( 'Icon (Emoji)', 'flatwp-wordpress-connector' ),
 								'name' => 'icon',
 								'type' => 'text',
-								'instructions' => __( 'Single emoji character (e.g., ⚡ 🚀 💡)', 'flatwp' ),
+								'instructions' => __( 'Single emoji character (e.g., ⚡ 🚀 💡)', 'flatwp-wordpress-connector' ),
 								'maxlength' => 2,
 							),
 							array(
 								'key' => 'field_feature_title',
-								'label' => __( 'Title', 'flatwp' ),
+								'label' => __( 'Title', 'flatwp-wordpress-connector' ),
 								'name' => 'title',
 								'type' => 'text',
 								'required' => 1,
@@ -347,7 +347,7 @@ class FlatWP_ACF_Fields {
 							),
 							array(
 								'key' => 'field_feature_description',
-								'label' => __( 'Description', 'flatwp' ),
+								'label' => __( 'Description', 'flatwp-wordpress-connector' ),
 								'name' => 'description',
 								'type' => 'textarea',
 								'rows' => 2,
@@ -362,28 +362,28 @@ class FlatWP_ACF_Fields {
 			'content_section' => array(
 				'key' => 'layout_content_section',
 				'name' => 'content_section',
-				'label' => '📝 ' . __( 'Content Section', 'flatwp' ),
+				'label' => '📝 ' . __( 'Content Section', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_content_heading',
-						'label' => __( 'Heading', 'flatwp' ),
+						'label' => __( 'Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
 						'maxlength' => 100,
 					),
 					array(
 						'key' => 'field_content_text',
-						'label' => __( 'Content', 'flatwp' ),
+						'label' => __( 'Content', 'flatwp-wordpress-connector' ),
 						'name' => 'content',
 						'type' => 'wysiwyg',
-						'instructions' => __( 'Rich text content with formatting', 'flatwp' ),
+						'instructions' => __( 'Rich text content with formatting', 'flatwp-wordpress-connector' ),
 						'toolbar' => 'full',
 						'media_upload' => 1,
 					),
 					array(
 						'key' => 'field_content_image',
-						'label' => __( 'Image (Optional)', 'flatwp' ),
+						'label' => __( 'Image (Optional)', 'flatwp-wordpress-connector' ),
 						'name' => 'image',
 						'type' => 'image',
 						'return_format' => 'array',
@@ -391,12 +391,12 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_content_layout',
-						'label' => __( 'Layout', 'flatwp' ),
+						'label' => __( 'Layout', 'flatwp-wordpress-connector' ),
 						'name' => 'layout',
 						'type' => 'select',
 						'choices' => array(
-							'single' => __( 'Full Width', 'flatwp' ),
-							'two-column' => __( 'Two Columns', 'flatwp' ),
+							'single' => __( 'Full Width', 'flatwp-wordpress-connector' ),
+							'two-column' => __( 'Two Columns', 'flatwp-wordpress-connector' ),
 						),
 						'default_value' => 'single',
 					),
@@ -407,28 +407,28 @@ class FlatWP_ACF_Fields {
 			'pricing' => array(
 				'key' => 'layout_pricing',
 				'name' => 'pricing',
-				'label' => '💰 ' . __( 'Pricing Table', 'flatwp' ),
+				'label' => '💰 ' . __( 'Pricing Table', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_pricing_heading',
-						'label' => __( 'Section Heading', 'flatwp' ),
+						'label' => __( 'Section Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
 						'maxlength' => 100,
 					),
 					array(
 						'key' => 'field_pricing_plans',
-						'label' => __( 'Pricing Plans', 'flatwp' ),
+						'label' => __( 'Pricing Plans', 'flatwp-wordpress-connector' ),
 						'name' => 'plans',
 						'type' => 'repeater',
-						'instructions' => __( 'Add 2-3 pricing tiers', 'flatwp' ),
+						'instructions' => __( 'Add 2-3 pricing tiers', 'flatwp-wordpress-connector' ),
 						'layout' => 'block',
-						'button_label' => __( 'Add Plan', 'flatwp' ),
+						'button_label' => __( 'Add Plan', 'flatwp-wordpress-connector' ),
 						'sub_fields' => array(
 							array(
 								'key' => 'field_plan_name',
-								'label' => __( 'Plan Name', 'flatwp' ),
+								'label' => __( 'Plan Name', 'flatwp-wordpress-connector' ),
 								'name' => 'name',
 								'type' => 'text',
 								'required' => 1,
@@ -436,41 +436,41 @@ class FlatWP_ACF_Fields {
 							),
 							array(
 								'key' => 'field_plan_price',
-								'label' => __( 'Price', 'flatwp' ),
+								'label' => __( 'Price', 'flatwp-wordpress-connector' ),
 								'name' => 'price',
 								'type' => 'text',
-								'instructions' => __( 'e.g., $29/month', 'flatwp' ),
+								'instructions' => __( 'e.g., $29/month', 'flatwp-wordpress-connector' ),
 								'required' => 1,
 								'maxlength' => 20,
 							),
 							array(
 								'key' => 'field_plan_features',
-								'label' => __( 'Features', 'flatwp' ),
+								'label' => __( 'Features', 'flatwp-wordpress-connector' ),
 								'name' => 'features',
 								'type' => 'textarea',
-								'instructions' => __( 'One feature per line', 'flatwp' ),
+								'instructions' => __( 'One feature per line', 'flatwp-wordpress-connector' ),
 								'rows' => 5,
 							),
 							array(
 								'key' => 'field_plan_cta_text',
-								'label' => __( 'Button Text', 'flatwp' ),
+								'label' => __( 'Button Text', 'flatwp-wordpress-connector' ),
 								'name' => 'cta_text',
 								'type' => 'text',
-								'default_value' => __( 'Get Started', 'flatwp' ),
+								'default_value' => __( 'Get Started', 'flatwp-wordpress-connector' ),
 								'maxlength' => 30,
 							),
 							array(
 								'key' => 'field_plan_cta_url',
-								'label' => __( 'Button URL', 'flatwp' ),
+								'label' => __( 'Button URL', 'flatwp-wordpress-connector' ),
 								'name' => 'cta_url',
 								'type' => 'url',
 							),
 							array(
 								'key' => 'field_plan_featured',
-								'label' => __( 'Featured Plan', 'flatwp' ),
+								'label' => __( 'Featured Plan', 'flatwp-wordpress-connector' ),
 								'name' => 'featured',
 								'type' => 'true_false',
-								'instructions' => __( 'Highlight this plan', 'flatwp' ),
+								'instructions' => __( 'Highlight this plan', 'flatwp-wordpress-connector' ),
 								'default_value' => 0,
 							),
 						),
@@ -482,28 +482,28 @@ class FlatWP_ACF_Fields {
 			'testimonials' => array(
 				'key' => 'layout_testimonials',
 				'name' => 'testimonials',
-				'label' => '💬 ' . __( 'Testimonials', 'flatwp' ),
+				'label' => '💬 ' . __( 'Testimonials', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_testimonials_heading',
-						'label' => __( 'Section Heading', 'flatwp' ),
+						'label' => __( 'Section Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
 						'maxlength' => 100,
 					),
 					array(
 						'key' => 'field_testimonials_items',
-						'label' => __( 'Testimonials', 'flatwp' ),
+						'label' => __( 'Testimonials', 'flatwp-wordpress-connector' ),
 						'name' => 'testimonials',
 						'type' => 'repeater',
-						'instructions' => __( 'Add 3-6 testimonials', 'flatwp' ),
+						'instructions' => __( 'Add 3-6 testimonials', 'flatwp-wordpress-connector' ),
 						'layout' => 'block',
-						'button_label' => __( 'Add Testimonial', 'flatwp' ),
+						'button_label' => __( 'Add Testimonial', 'flatwp-wordpress-connector' ),
 						'sub_fields' => array(
 							array(
 								'key' => 'field_testimonial_quote',
-								'label' => __( 'Quote', 'flatwp' ),
+								'label' => __( 'Quote', 'flatwp-wordpress-connector' ),
 								'name' => 'quote',
 								'type' => 'textarea',
 								'required' => 1,
@@ -512,7 +512,7 @@ class FlatWP_ACF_Fields {
 							),
 							array(
 								'key' => 'field_testimonial_author',
-								'label' => __( 'Author Name', 'flatwp' ),
+								'label' => __( 'Author Name', 'flatwp-wordpress-connector' ),
 								'name' => 'author',
 								'type' => 'text',
 								'required' => 1,
@@ -520,14 +520,14 @@ class FlatWP_ACF_Fields {
 							),
 							array(
 								'key' => 'field_testimonial_role',
-								'label' => __( 'Role/Company', 'flatwp' ),
+								'label' => __( 'Role/Company', 'flatwp-wordpress-connector' ),
 								'name' => 'role',
 								'type' => 'text',
 								'maxlength' => 100,
 							),
 							array(
 								'key' => 'field_testimonial_avatar',
-								'label' => __( 'Avatar (Optional)', 'flatwp' ),
+								'label' => __( 'Avatar (Optional)', 'flatwp-wordpress-connector' ),
 								'name' => 'avatar',
 								'type' => 'image',
 								'return_format' => 'array',
@@ -542,12 +542,12 @@ class FlatWP_ACF_Fields {
 			'cta_simple' => array(
 				'key' => 'layout_cta_simple',
 				'name' => 'cta_simple',
-				'label' => '📣 ' . __( 'Call-to-Action - Simple', 'flatwp' ),
+				'label' => '📣 ' . __( 'Call-to-Action - Simple', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_cta_simple_heading',
-						'label' => __( 'Heading', 'flatwp' ),
+						'label' => __( 'Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
 						'required' => 1,
@@ -555,7 +555,7 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_cta_simple_subheading',
-						'label' => __( 'Subheading', 'flatwp' ),
+						'label' => __( 'Subheading', 'flatwp-wordpress-connector' ),
 						'name' => 'subheading',
 						'type' => 'textarea',
 						'rows' => 2,
@@ -563,7 +563,7 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_cta_simple_button_text',
-						'label' => __( 'Button Text', 'flatwp' ),
+						'label' => __( 'Button Text', 'flatwp-wordpress-connector' ),
 						'name' => 'button_text',
 						'type' => 'text',
 						'required' => 1,
@@ -571,7 +571,7 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_cta_simple_button_url',
-						'label' => __( 'Button URL', 'flatwp' ),
+						'label' => __( 'Button URL', 'flatwp-wordpress-connector' ),
 						'name' => 'button_url',
 						'type' => 'url',
 						'required' => 1,
@@ -583,12 +583,12 @@ class FlatWP_ACF_Fields {
 			'cta_boxed' => array(
 				'key' => 'layout_cta_boxed',
 				'name' => 'cta_boxed',
-				'label' => '🎁 ' . __( 'Call-to-Action - Boxed', 'flatwp' ),
+				'label' => '🎁 ' . __( 'Call-to-Action - Boxed', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_cta_boxed_heading',
-						'label' => __( 'Heading', 'flatwp' ),
+						'label' => __( 'Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
 						'required' => 1,
@@ -596,7 +596,7 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_cta_boxed_subheading',
-						'label' => __( 'Subheading', 'flatwp' ),
+						'label' => __( 'Subheading', 'flatwp-wordpress-connector' ),
 						'name' => 'subheading',
 						'type' => 'textarea',
 						'rows' => 2,
@@ -604,7 +604,7 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_cta_boxed_button_text',
-						'label' => __( 'Button Text', 'flatwp' ),
+						'label' => __( 'Button Text', 'flatwp-wordpress-connector' ),
 						'name' => 'button_text',
 						'type' => 'text',
 						'required' => 1,
@@ -612,21 +612,21 @@ class FlatWP_ACF_Fields {
 					),
 					array(
 						'key' => 'field_cta_boxed_button_url',
-						'label' => __( 'Button URL', 'flatwp' ),
+						'label' => __( 'Button URL', 'flatwp-wordpress-connector' ),
 						'name' => 'button_url',
 						'type' => 'url',
 						'required' => 1,
 					),
 					array(
 						'key' => 'field_cta_boxed_background_color',
-						'label' => __( 'Background Style', 'flatwp' ),
+						'label' => __( 'Background Style', 'flatwp-wordpress-connector' ),
 						'name' => 'background_color',
 						'type' => 'select',
 						'choices' => array(
-							'gradient-blue' => __( 'Blue Gradient', 'flatwp' ),
-							'gradient-purple' => __( 'Purple Gradient', 'flatwp' ),
-							'gradient-green' => __( 'Green Gradient', 'flatwp' ),
-							'solid-dark' => __( 'Solid Dark', 'flatwp' ),
+							'gradient-blue' => __( 'Blue Gradient', 'flatwp-wordpress-connector' ),
+							'gradient-purple' => __( 'Purple Gradient', 'flatwp-wordpress-connector' ),
+							'gradient-green' => __( 'Green Gradient', 'flatwp-wordpress-connector' ),
+							'solid-dark' => __( 'Solid Dark', 'flatwp-wordpress-connector' ),
 						),
 						'default_value' => 'gradient-blue',
 					),
@@ -655,24 +655,24 @@ class FlatWP_ACF_Fields {
 			'content_section' => array(
 				'key' => 'layout_sidebar_content_section',
 				'name' => 'content_section',
-				'label' => '📝 ' . __( 'Content Widget', 'flatwp' ),
+				'label' => '📝 ' . __( 'Content Widget', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_sidebar_content_title',
-						'label' => __( 'Title', 'flatwp' ),
+						'label' => __( 'Title', 'flatwp-wordpress-connector' ),
 						'name' => 'title',
 						'type' => 'text',
-						'instructions' => __( 'Widget title (optional)', 'flatwp' ),
+						'instructions' => __( 'Widget title (optional)', 'flatwp-wordpress-connector' ),
 						'required' => 0,
 						'maxlength' => 60,
 					),
 					array(
 						'key' => 'field_sidebar_content_content',
-						'label' => __( 'Content', 'flatwp' ),
+						'label' => __( 'Content', 'flatwp-wordpress-connector' ),
 						'name' => 'content',
 						'type' => 'wysiwyg',
-						'instructions' => __( 'Widget content with text, images, and links', 'flatwp' ),
+						'instructions' => __( 'Widget content with text, images, and links', 'flatwp-wordpress-connector' ),
 						'required' => 1,
 						'tabs' => 'all',
 						'toolbar' => 'basic',
@@ -685,44 +685,44 @@ class FlatWP_ACF_Fields {
 			'cta_simple' => array(
 				'key' => 'layout_sidebar_cta_simple',
 				'name' => 'cta_simple',
-				'label' => '📣 ' . __( 'CTA Widget', 'flatwp' ),
+				'label' => '📣 ' . __( 'CTA Widget', 'flatwp-wordpress-connector' ),
 				'display' => 'block',
 				'sub_fields' => array(
 					array(
 						'key' => 'field_sidebar_cta_heading',
-						'label' => __( 'Heading', 'flatwp' ),
+						'label' => __( 'Heading', 'flatwp-wordpress-connector' ),
 						'name' => 'heading',
 						'type' => 'text',
-						'instructions' => __( 'Call to action heading', 'flatwp' ),
+						'instructions' => __( 'Call to action heading', 'flatwp-wordpress-connector' ),
 						'required' => 1,
 						'maxlength' => 50,
 					),
 					array(
 						'key' => 'field_sidebar_cta_text',
-						'label' => __( 'Text', 'flatwp' ),
+						'label' => __( 'Text', 'flatwp-wordpress-connector' ),
 						'name' => 'text',
 						'type' => 'textarea',
-						'instructions' => __( 'Supporting text for the CTA', 'flatwp' ),
+						'instructions' => __( 'Supporting text for the CTA', 'flatwp-wordpress-connector' ),
 						'required' => 0,
 						'rows' => 3,
 						'maxlength' => 150,
 					),
 					array(
 						'key' => 'field_sidebar_cta_button_text',
-						'label' => __( 'Button Text', 'flatwp' ),
+						'label' => __( 'Button Text', 'flatwp-wordpress-connector' ),
 						'name' => 'button_text',
 						'type' => 'text',
-						'instructions' => __( 'Button label', 'flatwp' ),
+						'instructions' => __( 'Button label', 'flatwp-wordpress-connector' ),
 						'required' => 1,
-						'default_value' => __( 'Learn More', 'flatwp' ),
+						'default_value' => __( 'Learn More', 'flatwp-wordpress-connector' ),
 						'maxlength' => 30,
 					),
 					array(
 						'key' => 'field_sidebar_cta_button_url',
-						'label' => __( 'Button URL', 'flatwp' ),
+						'label' => __( 'Button URL', 'flatwp-wordpress-connector' ),
 						'name' => 'button_url',
 						'type' => 'url',
-						'instructions' => __( 'Where the button links to', 'flatwp' ),
+						'instructions' => __( 'Where the button links to', 'flatwp-wordpress-connector' ),
 						'required' => 1,
 					),
 				),
@@ -738,7 +738,7 @@ class FlatWP_ACF_Fields {
 	public function add_template_meta_box() {
 		add_meta_box(
 			'flatwp_page_template',
-			__( 'FlatWP Page Template', 'flatwp' ),
+			__( 'FlatWP Page Template', 'flatwp-wordpress-connector' ),
 			array( $this, 'render_template_meta_box' ),
 			'page',
 			'side',
@@ -759,11 +759,11 @@ class FlatWP_ACF_Fields {
 		<div class="flatwp-template-selector">
 			<p>
 				<label for="flatwp_page_template_select">
-					<strong><?php esc_html_e( 'Choose a Starter Template', 'flatwp' ); ?></strong>
+					<strong><?php esc_html_e( 'Choose a Starter Template', 'flatwp-wordpress-connector' ); ?></strong>
 				</label>
 			</p>
 			<select id="flatwp_page_template_select" name="flatwp_page_template" class="widefat">
-				<option value=""><?php esc_html_e( 'None (Custom Layout)', 'flatwp' ); ?></option>
+				<option value=""><?php esc_html_e( 'None (Custom Layout)', 'flatwp-wordpress-connector' ); ?></option>
 				<?php foreach ( $this->templates as $key => $template ) : ?>
 					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $current_template, $key ); ?>>
 						<?php echo esc_html( $template['icon'] . ' ' . $template['label'] ); ?>
@@ -782,11 +782,11 @@ class FlatWP_ACF_Fields {
 
 			<p style="margin-top: 12px;">
 				<button type="button" id="flatwp_apply_template" class="button button-secondary" style="width: 100%;">
-					<?php esc_html_e( 'Apply Template Blocks', 'flatwp' ); ?>
+					<?php esc_html_e( 'Apply Template Blocks', 'flatwp-wordpress-connector' ); ?>
 				</button>
 			</p>
 			<p class="description">
-				<?php esc_html_e( 'Selecting a template will pre-populate content blocks below. You can customize them after applying.', 'flatwp' ); ?>
+				<?php esc_html_e( 'Selecting a template will pre-populate content blocks below. You can customize them after applying.', 'flatwp-wordpress-connector' ); ?>
 			</p>
 		</div>
 
@@ -808,16 +808,16 @@ class FlatWP_ACF_Fields {
 			$('#flatwp_apply_template').on('click', function() {
 				var template = $('#flatwp_page_template_select').val();
 				if (!template) {
-					alert('<?php esc_html_e( 'Please select a template first.', 'flatwp' ); ?>');
+					alert('<?php esc_html_e( 'Please select a template first.', 'flatwp-wordpress-connector' ); ?>');
 					return;
 				}
 
-				if (!confirm('<?php esc_html_e( 'This will replace existing blocks. Continue?', 'flatwp' ); ?>')) {
+				if (!confirm('<?php esc_html_e( 'This will replace existing blocks. Continue?', 'flatwp-wordpress-connector' ); ?>')) {
 					return;
 				}
 
 				var button = $(this);
-				button.prop('disabled', true).text('<?php esc_html_e( 'Applying...', 'flatwp' ); ?>');
+				button.prop('disabled', true).text('<?php esc_html_e( 'Applying...', 'flatwp-wordpress-connector' ); ?>');
 
 				$.ajax({
 					url: ajaxurl,
@@ -830,16 +830,16 @@ class FlatWP_ACF_Fields {
 					},
 					success: function(response) {
 						if (response.success) {
-							alert('<?php esc_html_e( 'Template applied! Refreshing page...', 'flatwp' ); ?>');
+							alert('<?php esc_html_e( 'Template applied! Refreshing page...', 'flatwp-wordpress-connector' ); ?>');
 							location.reload();
 						} else {
-							alert('<?php esc_html_e( 'Error:', 'flatwp' ); ?> ' + response.data.message);
-							button.prop('disabled', false).text('<?php esc_html_e( 'Apply Template Blocks', 'flatwp' ); ?>');
+							alert('<?php esc_html_e( 'Error:', 'flatwp-wordpress-connector' ); ?> ' + response.data.message);
+							button.prop('disabled', false).text('<?php esc_html_e( 'Apply Template Blocks', 'flatwp-wordpress-connector' ); ?>');
 						}
 					},
 					error: function() {
-						alert('<?php esc_html_e( 'AJAX error occurred.', 'flatwp' ); ?>');
-						button.prop('disabled', false).text('<?php esc_html_e( 'Apply Template Blocks', 'flatwp' ); ?>');
+						alert('<?php esc_html_e( 'AJAX error occurred.', 'flatwp-wordpress-connector' ); ?>');
+						button.prop('disabled', false).text('<?php esc_html_e( 'Apply Template Blocks', 'flatwp-wordpress-connector' ); ?>');
 					}
 				});
 			});
@@ -904,11 +904,11 @@ class FlatWP_ACF_Fields {
 		$template = isset( $_POST['template'] ) ? sanitize_key( $_POST['template'] ) : '';
 
 		if ( ! $post_id || ! current_user_can( 'edit_post', $post_id ) ) {
-			wp_send_json_error( array( 'message' => __( 'Permission denied.', 'flatwp' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Permission denied.', 'flatwp-wordpress-connector' ) ) );
 		}
 
 		if ( ! isset( $this->templates[ $template ] ) ) {
-			wp_send_json_error( array( 'message' => __( 'Invalid template.', 'flatwp' ) ) );
+			wp_send_json_error( array( 'message' => __( 'Invalid template.', 'flatwp-wordpress-connector' ) ) );
 		}
 
 		// Get template blocks.
@@ -928,7 +928,7 @@ class FlatWP_ACF_Fields {
 		// Update the flexible content field.
 		update_field( 'flexible_content', $flexible_content, $post_id );
 
-		wp_send_json_success( array( 'message' => __( 'Template applied successfully.', 'flatwp' ) ) );
+		wp_send_json_success( array( 'message' => __( 'Template applied successfully.', 'flatwp-wordpress-connector' ) ) );
 	}
 
 	/**
@@ -940,85 +940,85 @@ class FlatWP_ACF_Fields {
 	private function get_default_block_data( $block_name ) {
 		$defaults = array(
 			'hero_centered' => array(
-				'heading' => __( 'Welcome to Your Site', 'flatwp' ),
-				'subheading' => __( 'Start building something amazing with FlatWP', 'flatwp' ),
-				'cta_text' => __( 'Get Started', 'flatwp' ),
+				'heading' => __( 'Welcome to Your Site', 'flatwp-wordpress-connector' ),
+				'subheading' => __( 'Start building something amazing with FlatWP', 'flatwp-wordpress-connector' ),
+				'cta_text' => __( 'Get Started', 'flatwp-wordpress-connector' ),
 				'cta_url' => '#',
 			),
 			'hero_split' => array(
-				'heading' => __( 'Modern Headless WordPress', 'flatwp' ),
-				'subheading' => __( 'Fast, scalable, and developer-friendly', 'flatwp' ),
+				'heading' => __( 'Modern Headless WordPress', 'flatwp-wordpress-connector' ),
+				'subheading' => __( 'Fast, scalable, and developer-friendly', 'flatwp-wordpress-connector' ),
 				'image_position' => 'right',
-				'cta_text' => __( 'Learn More', 'flatwp' ),
+				'cta_text' => __( 'Learn More', 'flatwp-wordpress-connector' ),
 				'cta_url' => '#',
 			),
 			'features_grid' => array(
-				'heading' => __( 'Features', 'flatwp' ),
-				'subheading' => __( 'Everything you need to build modern web applications', 'flatwp' ),
+				'heading' => __( 'Features', 'flatwp-wordpress-connector' ),
+				'subheading' => __( 'Everything you need to build modern web applications', 'flatwp-wordpress-connector' ),
 				'features' => array(
 					array(
 						'icon' => '⚡',
-						'title' => __( 'Lightning Fast', 'flatwp' ),
-						'description' => __( 'Built for speed with Next.js and ISR', 'flatwp' ),
+						'title' => __( 'Lightning Fast', 'flatwp-wordpress-connector' ),
+						'description' => __( 'Built for speed with Next.js and ISR', 'flatwp-wordpress-connector' ),
 					),
 					array(
 						'icon' => '🎨',
-						'title' => __( 'Beautiful Design', 'flatwp' ),
-						'description' => __( 'Modern UI with TailwindCSS', 'flatwp' ),
+						'title' => __( 'Beautiful Design', 'flatwp-wordpress-connector' ),
+						'description' => __( 'Modern UI with TailwindCSS', 'flatwp-wordpress-connector' ),
 					),
 					array(
 						'icon' => '🔒',
-						'title' => __( 'Secure by Default', 'flatwp' ),
-						'description' => __( 'Best security practices built-in', 'flatwp' ),
+						'title' => __( 'Secure by Default', 'flatwp-wordpress-connector' ),
+						'description' => __( 'Best security practices built-in', 'flatwp-wordpress-connector' ),
 					),
 				),
 			),
 			'content_section' => array(
-				'heading' => __( 'About Us', 'flatwp' ),
-				'content' => '<p>' . __( 'Add your content here...', 'flatwp' ) . '</p>',
+				'heading' => __( 'About Us', 'flatwp-wordpress-connector' ),
+				'content' => '<p>' . __( 'Add your content here...', 'flatwp-wordpress-connector' ) . '</p>',
 				'layout' => 'single',
 			),
 			'pricing' => array(
-				'heading' => __( 'Pricing Plans', 'flatwp' ),
+				'heading' => __( 'Pricing Plans', 'flatwp-wordpress-connector' ),
 				'plans' => array(
 					array(
-						'name' => __( 'Starter', 'flatwp' ),
+						'name' => __( 'Starter', 'flatwp-wordpress-connector' ),
 						'price' => '$29/mo',
 						'features' => "Feature 1\nFeature 2\nFeature 3",
-						'cta_text' => __( 'Get Started', 'flatwp' ),
+						'cta_text' => __( 'Get Started', 'flatwp-wordpress-connector' ),
 						'cta_url' => '#',
 						'featured' => false,
 					),
 					array(
-						'name' => __( 'Professional', 'flatwp' ),
+						'name' => __( 'Professional', 'flatwp-wordpress-connector' ),
 						'price' => '$99/mo',
 						'features' => "All Starter features\nFeature 4\nFeature 5",
-						'cta_text' => __( 'Get Started', 'flatwp' ),
+						'cta_text' => __( 'Get Started', 'flatwp-wordpress-connector' ),
 						'cta_url' => '#',
 						'featured' => true,
 					),
 				),
 			),
 			'testimonials' => array(
-				'heading' => __( 'What Our Customers Say', 'flatwp' ),
+				'heading' => __( 'What Our Customers Say', 'flatwp-wordpress-connector' ),
 				'testimonials' => array(
 					array(
-						'quote' => __( 'This is an amazing product! Highly recommended.', 'flatwp' ),
+						'quote' => __( 'This is an amazing product! Highly recommended.', 'flatwp-wordpress-connector' ),
 						'author' => 'John Doe',
-						'role' => __( 'CEO, Company Inc.', 'flatwp' ),
+						'role' => __( 'CEO, Company Inc.', 'flatwp-wordpress-connector' ),
 					),
 				),
 			),
 			'cta_simple' => array(
-				'heading' => __( 'Ready to Get Started?', 'flatwp' ),
-				'subheading' => __( 'Join thousands of satisfied customers today', 'flatwp' ),
-				'button_text' => __( 'Get Started', 'flatwp' ),
+				'heading' => __( 'Ready to Get Started?', 'flatwp-wordpress-connector' ),
+				'subheading' => __( 'Join thousands of satisfied customers today', 'flatwp-wordpress-connector' ),
+				'button_text' => __( 'Get Started', 'flatwp-wordpress-connector' ),
 				'button_url' => '#',
 			),
 			'cta_boxed' => array(
-				'heading' => __( 'Start Building Today', 'flatwp' ),
-				'subheading' => __( 'Get started with FlatWP in minutes', 'flatwp' ),
-				'button_text' => __( 'Get Started Free', 'flatwp' ),
+				'heading' => __( 'Start Building Today', 'flatwp-wordpress-connector' ),
+				'subheading' => __( 'Get started with FlatWP in minutes', 'flatwp-wordpress-connector' ),
+				'button_text' => __( 'Get Started Free', 'flatwp-wordpress-connector' ),
 				'button_url' => '#',
 				'background_color' => 'gradient-blue',
 			),

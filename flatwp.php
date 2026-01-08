@@ -8,7 +8,7 @@
  * Author URI: https://flatwp.com
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: flatwp
+ * Text Domain: flatwp-wordpress-connector
  * Domain Path: /languages
  * Requires at least: 6.0
  * Requires PHP: 7.4
@@ -349,8 +349,8 @@ final class FlatWP_Companion {
 		if ( version_compare( get_bloginfo( 'version' ), '6.0', '<' ) ) {
 			deactivate_plugins( FLATWP_PLUGIN_BASENAME );
 			wp_die(
-				esc_html__( 'FlatWP - WordPress Connector requires WordPress 6.0 or higher.', 'flatwp' ),
-				esc_html__( 'Plugin Activation Error', 'flatwp' ),
+				esc_html__( 'FlatWP - WordPress Connector requires WordPress 6.0 or higher.', 'flatwp-wordpress-connector' ),
+				esc_html__( 'Plugin Activation Error', 'flatwp-wordpress-connector' ),
 				array( 'back_link' => true )
 			);
 		}
@@ -359,8 +359,8 @@ final class FlatWP_Companion {
 		if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
 			deactivate_plugins( FLATWP_PLUGIN_BASENAME );
 			wp_die(
-				esc_html__( 'FlatWP - WordPress Connector requires PHP 7.4 or higher.', 'flatwp' ),
-				esc_html__( 'Plugin Activation Error', 'flatwp' ),
+				esc_html__( 'FlatWP - WordPress Connector requires PHP 7.4 or higher.', 'flatwp-wordpress-connector' ),
+				esc_html__( 'Plugin Activation Error', 'flatwp-wordpress-connector' ),
 				array( 'back_link' => true )
 			);
 		}

@@ -7,6 +7,11 @@
  * @package FlatWP
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class FlatWP_GraphQL_Menu_Locations {
 	/**
 	 * Initialize GraphQL extensions for menu locations

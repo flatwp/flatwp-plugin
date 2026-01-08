@@ -32,7 +32,7 @@ class FlatWP_Page_Settings {
 	public function add_meta_box() {
 		add_meta_box(
 			'flatwp_page_settings',
-			__( 'FlatWP Page Settings', 'flatwp' ),
+			__( 'FlatWP Page Settings', 'flatwp-wordpress-connector' ),
 			array( $this, 'render_meta_box' ),
 			'page',
 			'side',
@@ -100,24 +100,24 @@ class FlatWP_Page_Settings {
 						value="1"
 						<?php checked( $hide_title, true ); ?>
 					/>
-					<span><?php esc_html_e( 'Hide Page Title', 'flatwp' ); ?></span>
+					<span><?php esc_html_e( 'Hide Page Title', 'flatwp-wordpress-connector' ); ?></span>
 				</label>
 			</p>
 
 			<!-- Container Width -->
 			<p>
 				<span class="setting-label">
-					<?php esc_html_e( 'Container Width', 'flatwp' ); ?>
+					<?php esc_html_e( 'Container Width', 'flatwp-wordpress-connector' ); ?>
 				</span>
 				<select name="flatwp_container_width">
 					<option value="default" <?php selected( $container_width, 'default' ); ?>>
-						<?php esc_html_e( 'Default', 'flatwp' ); ?>
+						<?php esc_html_e( 'Default', 'flatwp-wordpress-connector' ); ?>
 					</option>
 					<option value="contained" <?php selected( $container_width, 'contained' ); ?>>
-						<?php esc_html_e( 'Contained', 'flatwp' ); ?>
+						<?php esc_html_e( 'Contained', 'flatwp-wordpress-connector' ); ?>
 					</option>
 					<option value="full-width" <?php selected( $container_width, 'full-width' ); ?>>
-						<?php esc_html_e( 'Full Width', 'flatwp' ); ?>
+						<?php esc_html_e( 'Full Width', 'flatwp-wordpress-connector' ); ?>
 					</option>
 				</select>
 			</p>
@@ -131,7 +131,7 @@ class FlatWP_Page_Settings {
 						value="1"
 						<?php checked( $hide_header, true ); ?>
 					/>
-					<span><?php esc_html_e( 'Hide Site Header', 'flatwp' ); ?></span>
+					<span><?php esc_html_e( 'Hide Site Header', 'flatwp-wordpress-connector' ); ?></span>
 				</label>
 			</p>
 
@@ -144,23 +144,23 @@ class FlatWP_Page_Settings {
 						value="1"
 						<?php checked( $hide_footer, true ); ?>
 					/>
-					<span><?php esc_html_e( 'Hide Site Footer', 'flatwp' ); ?></span>
+					<span><?php esc_html_e( 'Hide Site Footer', 'flatwp-wordpress-connector' ); ?></span>
 				</label>
 			</p>
 
 			<!-- Custom CSS Class -->
 			<p>
 				<span class="setting-label">
-					<?php esc_html_e( 'Custom CSS Classes', 'flatwp' ); ?>
+					<?php esc_html_e( 'Custom CSS Classes', 'flatwp-wordpress-connector' ); ?>
 				</span>
 				<input
 					type="text"
 					name="flatwp_custom_css_class"
 					value="<?php echo esc_attr( $custom_css_class ); ?>"
-					placeholder="<?php esc_attr_e( 'my-custom-class another-class', 'flatwp' ); ?>"
+					placeholder="<?php esc_attr_e( 'my-custom-class another-class', 'flatwp-wordpress-connector' ); ?>"
 				/>
 				<span class="setting-description">
-					<?php esc_html_e( 'Space-separated CSS classes for custom styling.', 'flatwp' ); ?>
+					<?php esc_html_e( 'Space-separated CSS classes for custom styling.', 'flatwp-wordpress-connector' ); ?>
 				</span>
 			</p>
 		</div>

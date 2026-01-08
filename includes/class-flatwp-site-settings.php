@@ -12,6 +12,11 @@
  * @package FlatWP
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class FlatWP_Site_Settings {
 	/**
 	 * Option key for storing all settings

@@ -28,7 +28,7 @@ class FlatWP_Dashboard_Widget {
 	public function register_dashboard_widget() {
 		wp_add_dashboard_widget(
 			'flatwp_dashboard_widget',
-			__( '⚡ FlatWP Status', 'flatwp' ),
+			__( '⚡ FlatWP Status', 'flatwp-wordpress-connector' ),
 			array( $this, 'render_dashboard_widget' ),
 			null,
 			null,
@@ -182,49 +182,49 @@ class FlatWP_Dashboard_Widget {
 		<div class="flatwp-dashboard-widget">
 			<!-- Connection Status -->
 			<div class="flatwp-status-section">
-				<h4><?php esc_html_e( 'Connection Status', 'flatwp' ); ?></h4>
+				<h4><?php esc_html_e( 'Connection Status', 'flatwp-wordpress-connector' ); ?></h4>
 				<div class="flatwp-status-row">
-					<span class="flatwp-status-label"><?php esc_html_e( 'Next.js Frontend', 'flatwp' ); ?></span>
+					<span class="flatwp-status-label"><?php esc_html_e( 'Next.js Frontend', 'flatwp-wordpress-connector' ); ?></span>
 					<span class="flatwp-status-badge <?php echo $connection_status['connected'] ? 'connected' : 'disconnected'; ?>">
-						<?php echo $connection_status['connected'] ? esc_html__( 'Connected', 'flatwp' ) : esc_html__( 'Disconnected', 'flatwp' ); ?>
+						<?php echo $connection_status['connected'] ? esc_html__( 'Connected', 'flatwp-wordpress-connector' ) : esc_html__( 'Disconnected', 'flatwp-wordpress-connector' ); ?>
 					</span>
 				</div>
 				<div class="flatwp-status-row">
-					<span class="flatwp-status-label"><?php esc_html_e( 'Frontend URL', 'flatwp' ); ?></span>
+					<span class="flatwp-status-label"><?php esc_html_e( 'Frontend URL', 'flatwp-wordpress-connector' ); ?></span>
 					<span class="flatwp-status-value">
 						<?php
-						$nextjs_url = flatwp()->get_setting( 'nextjs_url', __( 'Not configured', 'flatwp' ) );
+						$nextjs_url = flatwp()->get_setting( 'nextjs_url', __( 'Not configured', 'flatwp-wordpress-connector' ) );
 						echo esc_html( $nextjs_url );
 						?>
 					</span>
 				</div>
 				<div class="flatwp-status-row">
-					<span class="flatwp-status-label"><?php esc_html_e( 'Webhooks', 'flatwp' ); ?></span>
+					<span class="flatwp-status-label"><?php esc_html_e( 'Webhooks', 'flatwp-wordpress-connector' ); ?></span>
 					<span class="flatwp-status-badge <?php echo flatwp()->get_setting( 'webhook_enabled' ) ? 'active' : 'disconnected'; ?>">
-						<?php echo flatwp()->get_setting( 'webhook_enabled' ) ? esc_html__( 'Enabled', 'flatwp' ) : esc_html__( 'Disabled', 'flatwp' ); ?>
+						<?php echo flatwp()->get_setting( 'webhook_enabled' ) ? esc_html__( 'Enabled', 'flatwp-wordpress-connector' ) : esc_html__( 'Disabled', 'flatwp-wordpress-connector' ); ?>
 					</span>
 				</div>
 				<div class="flatwp-status-row">
-					<span class="flatwp-status-label"><?php esc_html_e( 'Preview Mode', 'flatwp' ); ?></span>
+					<span class="flatwp-status-label"><?php esc_html_e( 'Preview Mode', 'flatwp-wordpress-connector' ); ?></span>
 					<span class="flatwp-status-badge <?php echo flatwp()->get_setting( 'enable_preview' ) ? 'active' : 'disconnected'; ?>">
-						<?php echo flatwp()->get_setting( 'enable_preview' ) ? esc_html__( 'Enabled', 'flatwp' ) : esc_html__( 'Disabled', 'flatwp' ); ?>
+						<?php echo flatwp()->get_setting( 'enable_preview' ) ? esc_html__( 'Enabled', 'flatwp-wordpress-connector' ) : esc_html__( 'Disabled', 'flatwp-wordpress-connector' ); ?>
 					</span>
 				</div>
 			</div>
 
 			<!-- Cache Settings -->
 			<div class="flatwp-status-section">
-				<h4><?php esc_html_e( 'Cache Strategy', 'flatwp' ); ?></h4>
+				<h4><?php esc_html_e( 'Cache Strategy', 'flatwp-wordpress-connector' ); ?></h4>
 				<div class="flatwp-status-row">
-					<span class="flatwp-status-label"><?php esc_html_e( 'Posts', 'flatwp' ); ?></span>
+					<span class="flatwp-status-label"><?php esc_html_e( 'Posts', 'flatwp-wordpress-connector' ); ?></span>
 					<span class="flatwp-status-value"><?php echo esc_html( $this->format_cache_strategy( flatwp()->get_setting( 'cache_strategy_posts', 'on-demand' ) ) ); ?></span>
 				</div>
 				<div class="flatwp-status-row">
-					<span class="flatwp-status-label"><?php esc_html_e( 'Pages', 'flatwp' ); ?></span>
+					<span class="flatwp-status-label"><?php esc_html_e( 'Pages', 'flatwp-wordpress-connector' ); ?></span>
 					<span class="flatwp-status-value"><?php echo esc_html( $this->format_cache_strategy( flatwp()->get_setting( 'cache_strategy_pages', 'static' ) ) ); ?></span>
 				</div>
 				<div class="flatwp-status-row">
-					<span class="flatwp-status-label"><?php esc_html_e( 'Homepage', 'flatwp' ); ?></span>
+					<span class="flatwp-status-label"><?php esc_html_e( 'Homepage', 'flatwp-wordpress-connector' ); ?></span>
 					<span class="flatwp-status-value"><?php echo esc_html( $this->format_cache_strategy( flatwp()->get_setting( 'cache_strategy_homepage', '60' ) ) ); ?></span>
 				</div>
 			</div>
@@ -232,7 +232,7 @@ class FlatWP_Dashboard_Widget {
 			<!-- Recent Activity -->
 			<?php if ( ! empty( $recent_activity ) ) : ?>
 			<div class="flatwp-status-section">
-				<h4><?php esc_html_e( 'Recent Activity', 'flatwp' ); ?></h4>
+				<h4><?php esc_html_e( 'Recent Activity', 'flatwp-wordpress-connector' ); ?></h4>
 				<ul class="flatwp-activity-list">
 					<?php foreach ( $recent_activity as $activity ) : ?>
 					<li class="flatwp-activity-item">
@@ -247,26 +247,26 @@ class FlatWP_Dashboard_Widget {
 			<!-- Quick Actions -->
 			<div class="flatwp-widget-actions">
 				<button type="button" class="button" onclick="flatwpClearAllCache()">
-					<?php esc_html_e( 'Clear All Cache', 'flatwp' ); ?>
+					<?php esc_html_e( 'Clear All Cache', 'flatwp-wordpress-connector' ); ?>
 				</button>
 				<button type="button" class="button" onclick="flatwpRevalidateAll()">
-					<?php esc_html_e( 'Revalidate All', 'flatwp' ); ?>
+					<?php esc_html_e( 'Revalidate All', 'flatwp-wordpress-connector' ); ?>
 				</button>
 				<a href="<?php echo esc_url( admin_url( 'admin.php?page=flatwp' ) ); ?>" class="button button-primary">
-					<?php esc_html_e( 'Open Dashboard', 'flatwp' ); ?>
+					<?php esc_html_e( 'Open Dashboard', 'flatwp-wordpress-connector' ); ?>
 				</a>
 			</div>
 		</div>
 
 		<script>
 		function flatwpClearAllCache() {
-			if (!confirm('<?php echo esc_js( __( 'This will clear all cached content. Continue?', 'flatwp' ) ); ?>')) {
+			if (!confirm('<?php echo esc_js( __( 'This will clear all cached content. Continue?', 'flatwp-wordpress-connector' ) ); ?>')) {
 				return;
 			}
 
 			const button = event.target;
 			button.disabled = true;
-			button.textContent = '<?php echo esc_js( __( 'Clearing...', 'flatwp' ) ); ?>';
+			button.textContent = '<?php echo esc_js( __( 'Clearing...', 'flatwp-wordpress-connector' ) ); ?>';
 
 			fetch('<?php echo esc_url( rest_url( 'flatwp/v1/cache/clear' ) ); ?>', {
 				method: 'POST',
@@ -279,29 +279,29 @@ class FlatWP_Dashboard_Widget {
 			.then(response => response.json())
 			.then(data => {
 				if (data.success) {
-					alert('<?php echo esc_js( __( 'Cache cleared successfully!', 'flatwp' ) ); ?>');
+					alert('<?php echo esc_js( __( 'Cache cleared successfully!', 'flatwp-wordpress-connector' ) ); ?>');
 					location.reload();
 				} else {
-					alert('<?php echo esc_js( __( 'Error: ', 'flatwp' ) ); ?>' + (data.message || '<?php echo esc_js( __( 'Unknown error', 'flatwp' ) ); ?>'));
+					alert('<?php echo esc_js( __( 'Error: ', 'flatwp-wordpress-connector' ) ); ?>' + (data.message || '<?php echo esc_js( __( 'Unknown error', 'flatwp-wordpress-connector' ) ); ?>'));
 				}
 			})
 			.catch(error => {
-				alert('<?php echo esc_js( __( 'Network error. Please try again.', 'flatwp' ) ); ?>');
+				alert('<?php echo esc_js( __( 'Network error. Please try again.', 'flatwp-wordpress-connector' ) ); ?>');
 			})
 			.finally(() => {
 				button.disabled = false;
-				button.textContent = '<?php echo esc_js( __( 'Clear All Cache', 'flatwp' ) ); ?>';
+				button.textContent = '<?php echo esc_js( __( 'Clear All Cache', 'flatwp-wordpress-connector' ) ); ?>';
 			});
 		}
 
 		function flatwpRevalidateAll() {
-			if (!confirm('<?php echo esc_js( __( 'This will trigger revalidation for all content. Continue?', 'flatwp' ) ); ?>')) {
+			if (!confirm('<?php echo esc_js( __( 'This will trigger revalidation for all content. Continue?', 'flatwp-wordpress-connector' ) ); ?>')) {
 				return;
 			}
 
 			const button = event.target;
 			button.disabled = true;
-			button.textContent = '<?php echo esc_js( __( 'Revalidating...', 'flatwp' ) ); ?>';
+			button.textContent = '<?php echo esc_js( __( 'Revalidating...', 'flatwp-wordpress-connector' ) ); ?>';
 
 			fetch('<?php echo esc_url( rest_url( 'flatwp/v1/revalidate-all' ) ); ?>', {
 				method: 'POST',
@@ -313,18 +313,18 @@ class FlatWP_Dashboard_Widget {
 			.then(response => response.json())
 			.then(data => {
 				if (data.success) {
-					alert('<?php echo esc_js( __( 'Revalidation triggered successfully!', 'flatwp' ) ); ?>');
+					alert('<?php echo esc_js( __( 'Revalidation triggered successfully!', 'flatwp-wordpress-connector' ) ); ?>');
 					location.reload();
 				} else {
-					alert('<?php echo esc_js( __( 'Error: ', 'flatwp' ) ); ?>' + (data.message || '<?php echo esc_js( __( 'Unknown error', 'flatwp' ) ); ?>'));
+					alert('<?php echo esc_js( __( 'Error: ', 'flatwp-wordpress-connector' ) ); ?>' + (data.message || '<?php echo esc_js( __( 'Unknown error', 'flatwp-wordpress-connector' ) ); ?>'));
 				}
 			})
 			.catch(error => {
-				alert('<?php echo esc_js( __( 'Network error. Please try again.', 'flatwp' ) ); ?>');
+				alert('<?php echo esc_js( __( 'Network error. Please try again.', 'flatwp-wordpress-connector' ) ); ?>');
 			})
 			.finally(() => {
 				button.disabled = false;
-				button.textContent = '<?php echo esc_js( __( 'Revalidate All', 'flatwp' ) ); ?>';
+				button.textContent = '<?php echo esc_js( __( 'Revalidate All', 'flatwp-wordpress-connector' ) ); ?>';
 			});
 		}
 		</script>
@@ -373,7 +373,7 @@ class FlatWP_Dashboard_Widget {
 		if ( empty( $nextjs_url ) ) {
 			return array(
 				'connected' => false,
-				'message'   => __( 'Next.js URL not configured', 'flatwp' ),
+				'message'   => __( 'Next.js URL not configured', 'flatwp-wordpress-connector' ),
 			);
 		}
 
@@ -383,7 +383,7 @@ class FlatWP_Dashboard_Widget {
 		if ( false !== $last_connection ) {
 			return array(
 				'connected' => true,
-				'message'   => __( 'Connected', 'flatwp' ),
+				'message'   => __( 'Connected', 'flatwp-wordpress-connector' ),
 			);
 		}
 
@@ -406,7 +406,7 @@ class FlatWP_Dashboard_Widget {
 
 		return array(
 			'connected' => $is_connected,
-			'message'   => $is_connected ? __( 'Connected', 'flatwp' ) : __( 'Connection failed', 'flatwp' ),
+			'message'   => $is_connected ? __( 'Connected', 'flatwp-wordpress-connector' ) : __( 'Connection failed', 'flatwp-wordpress-connector' ),
 		);
 	}
 
@@ -434,20 +434,22 @@ class FlatWP_Dashboard_Widget {
 	 */
 	private function format_cache_strategy( $strategy ) {
 		if ( 'on-demand' === $strategy ) {
-			return __( 'On-Demand ISR', 'flatwp' );
+			return __( 'On-Demand ISR', 'flatwp-wordpress-connector' );
 		}
 
 		if ( 'static' === $strategy ) {
-			return __( 'Static', 'flatwp' );
+			return __( 'Static', 'flatwp-wordpress-connector' );
 		}
 
 		if ( is_numeric( $strategy ) ) {
 			$seconds = intval( $strategy );
 			if ( $seconds < 60 ) {
-				return sprintf( __( '%d seconds', 'flatwp' ), $seconds );
+				/* translators: %d: number of seconds */
+				return sprintf( __( '%d seconds', 'flatwp-wordpress-connector' ), $seconds );
 			}
 			$minutes = floor( $seconds / 60 );
-			return sprintf( __( '%d minutes', 'flatwp' ), $minutes );
+			/* translators: %d: number of minutes */
+			return sprintf( __( '%d minutes', 'flatwp-wordpress-connector' ), $minutes );
 		}
 
 		return ucfirst( $strategy );

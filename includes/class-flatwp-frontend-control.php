@@ -157,8 +157,8 @@ class FlatWP_Frontend_Control {
 		// Validate Next.js URL is configured
 		if ( empty( $nextjs_url ) ) {
 			wp_die(
-				esc_html__( 'WordPress frontend is disabled. Next.js URL not configured.', 'flatwp' ),
-				esc_html__( 'Frontend Disabled', 'flatwp' ),
+				esc_html__( 'WordPress frontend is disabled. Next.js URL not configured.', 'flatwp-wordpress-connector' ),
+				esc_html__( 'Frontend Disabled', 'flatwp-wordpress-connector' ),
 				array( 'response' => 503 )
 			);
 		}
@@ -166,8 +166,8 @@ class FlatWP_Frontend_Control {
 		// Validate URL format to prevent open redirect
 		if ( ! filter_var( $nextjs_url, FILTER_VALIDATE_URL ) ) {
 			wp_die(
-				esc_html__( 'Invalid Next.js URL configuration.', 'flatwp' ),
-				esc_html__( 'Configuration Error', 'flatwp' ),
+				esc_html__( 'Invalid Next.js URL configuration.', 'flatwp-wordpress-connector' ),
+				esc_html__( 'Configuration Error', 'flatwp-wordpress-connector' ),
 				array( 'response' => 500 )
 			);
 		}

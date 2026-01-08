@@ -11,6 +11,11 @@
  * @package FlatWP
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class FlatWP_Menu_Locations {
 	/**
 	 * Initialize menu locations
@@ -46,12 +51,12 @@ class FlatWP_Menu_Locations {
 		error_log( 'FlatWP_Menu_Locations::register_menu_locations() called' );
 		register_nav_menus(
 			[
-				'primary-nav'       => __( 'Primary Navigation', 'flatwp' ),
-				'footer-column-1'   => __( 'Footer - Column 1 (Products)', 'flatwp' ),
-				'footer-column-2'   => __( 'Footer - Column 2 (Resources)', 'flatwp' ),
-				'footer-column-3'   => __( 'Footer - Column 3 (Company)', 'flatwp' ),
-				'footer-column-4'   => __( 'Footer - Column 4', 'flatwp' ),
-				'mobile-menu'       => __( 'Mobile Menu (Optional)', 'flatwp' ),
+				'primary-nav'       => __( 'Primary Navigation', 'flatwp-wordpress-connector' ),
+				'footer-column-1'   => __( 'Footer - Column 1 (Products)', 'flatwp-wordpress-connector' ),
+				'footer-column-2'   => __( 'Footer - Column 2 (Resources)', 'flatwp-wordpress-connector' ),
+				'footer-column-3'   => __( 'Footer - Column 3 (Company)', 'flatwp-wordpress-connector' ),
+				'footer-column-4'   => __( 'Footer - Column 4', 'flatwp-wordpress-connector' ),
+				'mobile-menu'       => __( 'Mobile Menu (Optional)', 'flatwp-wordpress-connector' ),
 			]
 		);
 		error_log( 'Menu locations registered: ' . count( get_registered_nav_menus() ) );

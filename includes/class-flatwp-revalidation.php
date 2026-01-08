@@ -175,7 +175,7 @@ class FlatWP_Revalidation {
 		$secret = flatwp()->get_setting( 'api_secret' );
 
 		if ( empty( $nextjs_url ) || empty( $secret ) ) {
-			$error = new WP_Error( 'missing_config', __( 'Next.js URL or secret not configured', 'flatwp' ) );
+			$error = new WP_Error( 'missing_config', __( 'Next.js URL or secret not configured', 'flatwp-wordpress-connector' ) );
 			$this->log_activity(
 				'revalidation_failed',
 				'error',

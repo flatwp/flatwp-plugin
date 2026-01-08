@@ -438,7 +438,7 @@ class FlatWP_Logger {
 			$this->log(
 				self::TYPE_SYSTEM,
 				self::SEVERITY_INFO,
-				__( 'All logs cleared', 'flatwp' )
+				__( 'All logs cleared', 'flatwp-wordpress-connector' )
 			);
 			return true;
 		}

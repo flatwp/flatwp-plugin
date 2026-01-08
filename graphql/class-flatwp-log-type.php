@@ -43,66 +43,66 @@ class FlatWP_Log_Type {
 		register_graphql_type(
 			'FlatWPLog',
 			array(
-				'description' => __( 'A FlatWP activity log entry', 'flatwp' ),
+				'description' => __( 'A FlatWP activity log entry', 'flatwp-wordpress-connector' ),
 				'fields'      => array(
 					'id'           => array(
 						'type'        => array( 'non_null' => 'String' ),
-						'description' => __( 'The unique identifier for the log entry', 'flatwp' ),
+						'description' => __( 'The unique identifier for the log entry', 'flatwp-wordpress-connector' ),
 					),
 					'timestamp'    => array(
 						'type'        => array( 'non_null' => 'Int' ),
-						'description' => __( 'The Unix timestamp when the log was created', 'flatwp' ),
+						'description' => __( 'The Unix timestamp when the log was created', 'flatwp-wordpress-connector' ),
 					),
 					'type'         => array(
 						'type'        => array( 'non_null' => 'String' ),
-						'description' => __( 'The log type (webhook, manual, system, error, debug)', 'flatwp' ),
+						'description' => __( 'The log type (webhook, manual, system, error, debug)', 'flatwp-wordpress-connector' ),
 					),
 					'severity'     => array(
 						'type'        => array( 'non_null' => 'String' ),
-						'description' => __( 'The log severity (success, error, warning, info)', 'flatwp' ),
+						'description' => __( 'The log severity (success, error, warning, info)', 'flatwp-wordpress-connector' ),
 					),
 					'message'      => array(
 						'type'        => array( 'non_null' => 'String' ),
-						'description' => __( 'The log message', 'flatwp' ),
+						'description' => __( 'The log message', 'flatwp-wordpress-connector' ),
 					),
 					'context'      => array(
 						'type'        => 'String',
-						'description' => __( 'Additional context data (JSON string)', 'flatwp' ),
+						'description' => __( 'Additional context data (JSON string)', 'flatwp-wordpress-connector' ),
 						'resolve'     => function( $log ) {
 							return isset( $log['context'] ) && is_array( $log['context'] ) ? wp_json_encode( $log['context'] ) : null;
 						},
 					),
 					'responseData' => array(
 						'type'        => 'String',
-						'description' => __( 'Response data from the webhook (JSON string)', 'flatwp' ),
+						'description' => __( 'Response data from the webhook (JSON string)', 'flatwp-wordpress-connector' ),
 						'resolve'     => function( $log ) {
 							return isset( $log['response_data'] ) && is_array( $log['response_data'] ) ? wp_json_encode( $log['response_data'] ) : null;
 						},
 					),
 					'responseTime' => array(
 						'type'        => 'Int',
-						'description' => __( 'Response time in milliseconds', 'flatwp' ),
+						'description' => __( 'Response time in milliseconds', 'flatwp-wordpress-connector' ),
 						'resolve'     => function( $log ) {
 							return isset( $log['response_time'] ) ? absint( $log['response_time'] ) : null;
 						},
 					),
 					'httpCode'     => array(
 						'type'        => 'Int',
-						'description' => __( 'HTTP response code from the webhook', 'flatwp' ),
+						'description' => __( 'HTTP response code from the webhook', 'flatwp-wordpress-connector' ),
 						'resolve'     => function( $log ) {
 							return isset( $log['http_code'] ) ? absint( $log['http_code'] ) : null;
 						},
 					),
 					'userId'       => array(
 						'type'        => 'Int',
-						'description' => __( 'WordPress user ID who triggered the log', 'flatwp' ),
+						'description' => __( 'WordPress user ID who triggered the log', 'flatwp-wordpress-connector' ),
 						'resolve'     => function( $log ) {
 							return isset( $log['user_id'] ) ? absint( $log['user_id'] ) : null;
 						},
 					),
 					'user'         => array(
 						'type'        => 'User',
-						'description' => __( 'The WordPress user who triggered the log', 'flatwp' ),
+						'description' => __( 'The WordPress user who triggered the log', 'flatwp-wordpress-connector' ),
 						'resolve'     => function( $log ) {
 							if ( ! isset( $log['user_id'] ) || ! $log['user_id'] ) {
 								return null;
@@ -124,23 +124,23 @@ class FlatWP_Log_Type {
 		register_graphql_type(
 			'FlatWPLogsConnection',
 			array(
-				'description' => __( 'A connection for FlatWP activity logs', 'flatwp' ),
+				'description' => __( 'A connection for FlatWP activity logs', 'flatwp-wordpress-connector' ),
 				'fields'      => array(
 					'edges'        => array(
 						'type'        => array( 'list_of' => 'FlatWPLogEdge' ),
-						'description' => __( 'The edges of the connection', 'flatwp' ),
+						'description' => __( 'The edges of the connection', 'flatwp-wordpress-connector' ),
 					),
 					'pageInfo'     => array(
 						'type'        => 'PageInfo',
-						'description' => __( 'Information about the current page', 'flatwp' ),
+						'description' => __( 'Information about the current page', 'flatwp-wordpress-connector' ),
 					),
 					'total'        => array(
 						'type'        => 'Int',
-						'description' => __( 'The total number of logs', 'flatwp' ),
+						'description' => __( 'The total number of logs', 'flatwp-wordpress-connector' ),
 					),
 					'totalPages'   => array(
 						'type'        => 'Int',
-						'description' => __( 'The total number of pages', 'flatwp' ),
+						'description' => __( 'The total number of pages', 'flatwp-wordpress-connector' ),
 					),
 				),
 			)
@@ -149,15 +149,15 @@ class FlatWP_Log_Type {
 		register_graphql_type(
 			'FlatWPLogEdge',
 			array(
-				'description' => __( 'An edge in a FlatWP logs connection', 'flatwp' ),
+				'description' => __( 'An edge in a FlatWP logs connection', 'flatwp-wordpress-connector' ),
 				'fields'      => array(
 					'node' => array(
 						'type'        => 'FlatWPLog',
-						'description' => __( 'The log entry', 'flatwp' ),
+						'description' => __( 'The log entry', 'flatwp-wordpress-connector' ),
 					),
 					'cursor' => array(
 						'type'        => 'String',
-						'description' => __( 'The cursor for pagination', 'flatwp' ),
+						'description' => __( 'The cursor for pagination', 'flatwp-wordpress-connector' ),
 					),
 				),
 			)
@@ -173,35 +173,35 @@ class FlatWP_Log_Type {
 			'flatwpLogs',
 			array(
 				'type'        => 'FlatWPLogsConnection',
-				'description' => __( 'Get FlatWP activity logs', 'flatwp' ),
+				'description' => __( 'Get FlatWP activity logs', 'flatwp-wordpress-connector' ),
 				'args'        => array(
 					'first'    => array(
 						'type'        => 'Int',
-						'description' => __( 'Number of logs to return', 'flatwp' ),
+						'description' => __( 'Number of logs to return', 'flatwp-wordpress-connector' ),
 						'defaultValue' => 20,
 					),
 					'after'    => array(
 						'type'        => 'String',
-						'description' => __( 'Cursor for pagination', 'flatwp' ),
+						'description' => __( 'Cursor for pagination', 'flatwp-wordpress-connector' ),
 					),
 					'type'     => array(
 						'type'        => 'String',
-						'description' => __( 'Filter by log type (webhook, manual, system, error, debug, or all)', 'flatwp' ),
+						'description' => __( 'Filter by log type (webhook, manual, system, error, debug, or all)', 'flatwp-wordpress-connector' ),
 						'defaultValue' => 'all',
 					),
 					'severity' => array(
 						'type'        => 'String',
-						'description' => __( 'Filter by severity (success, error, warning, info, or all)', 'flatwp' ),
+						'description' => __( 'Filter by severity (success, error, warning, info, or all)', 'flatwp-wordpress-connector' ),
 						'defaultValue' => 'all',
 					),
 					'orderBy'  => array(
 						'type'        => 'String',
-						'description' => __( 'Field to order by (timestamp or id)', 'flatwp' ),
+						'description' => __( 'Field to order by (timestamp or id)', 'flatwp-wordpress-connector' ),
 						'defaultValue' => 'timestamp',
 					),
 					'order'    => array(
 						'type'        => 'String',
-						'description' => __( 'Order direction (ASC or DESC)', 'flatwp' ),
+						'description' => __( 'Order direction (ASC or DESC)', 'flatwp-wordpress-connector' ),
 						'defaultValue' => 'DESC',
 					),
 				),
@@ -217,7 +217,7 @@ class FlatWP_Log_Type {
 			'flatwpErrorCount',
 			array(
 				'type'        => 'Int',
-				'description' => __( 'Get the count of error logs in the last 24 hours', 'flatwp' ),
+				'description' => __( 'Get the count of error logs in the last 24 hours', 'flatwp-wordpress-connector' ),
 				'resolve'     => function() {
 					$since = current_time( 'timestamp' ) - ( 24 * HOUR_IN_SECONDS );
 					return FlatWP_Log_Resolver::get_error_count( $since );
@@ -231,11 +231,11 @@ class FlatWP_Log_Type {
 			'flatwpRecentActivity',
 			array(
 				'type'        => array( 'list_of' => 'FlatWPLog' ),
-				'description' => __( 'Get recent FlatWP activity logs', 'flatwp' ),
+				'description' => __( 'Get recent FlatWP activity logs', 'flatwp-wordpress-connector' ),
 				'args'        => array(
 					'limit' => array(
 						'type'        => 'Int',
-						'description' => __( 'Number of logs to return', 'flatwp' ),
+						'description' => __( 'Number of logs to return', 'flatwp-wordpress-connector' ),
 						'defaultValue' => 10,
 					),
 				),

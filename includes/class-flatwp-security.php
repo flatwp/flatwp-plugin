@@ -72,7 +72,7 @@ class FlatWP_Security {
 
 			return new WP_Error(
 				'rate_limited',
-				__( 'Too many requests. Please try again later.', 'flatwp' ),
+				__( 'Too many requests. Please try again later.', 'flatwp-wordpress-connector' ),
 				array( 'status' => 429 )
 			);
 		}
@@ -102,7 +102,7 @@ class FlatWP_Security {
 
 			return new WP_Error(
 				'rate_limited',
-				__( 'Rate limit exceeded. Please try again later.', 'flatwp' ),
+				__( 'Rate limit exceeded. Please try again later.', 'flatwp-wordpress-connector' ),
 				array( 'status' => 429 )
 			);
 		}
@@ -126,7 +126,7 @@ class FlatWP_Security {
 		if ( empty( $url ) ) {
 			return new WP_Error(
 				'invalid_url',
-				__( 'Next.js URL cannot be empty', 'flatwp' )
+				__( 'Next.js URL cannot be empty', 'flatwp-wordpress-connector' )
 			);
 		}
 
@@ -134,7 +134,7 @@ class FlatWP_Security {
 		if ( ! filter_var( $url, FILTER_VALIDATE_URL ) ) {
 			return new WP_Error(
 				'invalid_url',
-				__( 'Invalid URL format', 'flatwp' )
+				__( 'Invalid URL format', 'flatwp-wordpress-connector' )
 			);
 		}
 
@@ -145,7 +145,7 @@ class FlatWP_Security {
 		if ( ! isset( $parsed['scheme'] ) || ! in_array( $parsed['scheme'], array( 'http', 'https' ), true ) ) {
 			return new WP_Error(
 				'invalid_scheme',
-				__( 'URL must use HTTP or HTTPS', 'flatwp' )
+				__( 'URL must use HTTP or HTTPS', 'flatwp-wordpress-connector' )
 			);
 		}
 
@@ -153,7 +153,7 @@ class FlatWP_Security {
 		if ( $require_https && ! $this->is_development_environment() && $parsed['scheme'] !== 'https' ) {
 			return new WP_Error(
 				'https_required',
-				__( 'HTTPS is required in production environments', 'flatwp' )
+				__( 'HTTPS is required in production environments', 'flatwp-wordpress-connector' )
 			);
 		}
 
@@ -166,7 +166,7 @@ class FlatWP_Security {
 				if ( strpos( $host, $pattern ) !== false ) {
 					return new WP_Error(
 						'dev_url_in_production',
-						__( 'Development URLs cannot be used in production', 'flatwp' )
+						__( 'Development URLs cannot be used in production', 'flatwp-wordpress-connector' )
 					);
 				}
 			}
@@ -190,7 +190,7 @@ class FlatWP_Security {
 		);
 
 		if ( empty( $secret ) ) {
-			$result['messages'][] = __( 'Secret cannot be empty', 'flatwp' );
+			$result['messages'][] = __( 'Secret cannot be empty', 'flatwp-wordpress-connector' );
 			return $result;
 		}
 
@@ -200,7 +200,8 @@ class FlatWP_Security {
 		// Length check
 		if ( $length < self::MIN_SECRET_LENGTH ) {
 			$result['messages'][] = sprintf(
-				__( 'Secret must be at least %d characters long', 'flatwp' ),
+				/* translators: %d: minimum number of characters required */
+				__( 'Secret must be at least %d characters long', 'flatwp-wordpress-connector' ),
 				self::MIN_SECRET_LENGTH
 			);
 			return $result;
@@ -238,28 +239,29 @@ class FlatWP_Security {
 
 		if ( $score >= 80 ) {
 			$result['strength'] = 'strong';
-			$result['messages'][] = __( 'Strong secret', 'flatwp' );
+			$result['messages'][] = __( 'Strong secret', 'flatwp-wordpress-connector' );
 		} elseif ( $score >= 50 ) {
 			$result['strength'] = 'medium';
-			$result['messages'][] = __( 'Medium strength secret', 'flatwp' );
+			$result['messages'][] = __( 'Medium strength secret', 'flatwp-wordpress-connector' );
 			if ( $length < self::RECOMMENDED_SECRET_LENGTH ) {
 				$result['messages'][] = sprintf(
-					__( 'Consider using at least %d characters for better security', 'flatwp' ),
+					/* translators: %d: recommended number of characters */
+					__( 'Consider using at least %d characters for better security', 'flatwp-wordpress-connector' ),
 					self::RECOMMENDED_SECRET_LENGTH
 				);
 			}
 		} else {
 			$result['strength'] = 'weak';
-			$result['messages'][] = __( 'Weak secret - consider regenerating', 'flatwp' );
+			$result['messages'][] = __( 'Weak secret - consider regenerating', 'flatwp-wordpress-connector' );
 
 			if ( ! $has_uppercase || ! $has_lowercase ) {
-				$result['messages'][] = __( 'Include both uppercase and lowercase letters', 'flatwp' );
+				$result['messages'][] = __( 'Include both uppercase and lowercase letters', 'flatwp-wordpress-connector' );
 			}
 			if ( ! $has_numbers ) {
-				$result['messages'][] = __( 'Include numbers', 'flatwp' );
+				$result['messages'][] = __( 'Include numbers', 'flatwp-wordpress-connector' );
 			}
 			if ( ! $has_special ) {
-				$result['messages'][] = __( 'Include special characters', 'flatwp' );
+				$result['messages'][] = __( 'Include special characters', 'flatwp-wordpress-connector' );
 			}
 		}
 
@@ -339,7 +341,7 @@ class FlatWP_Security {
 
 			return new WP_Error(
 				'locked_out',
-				__( 'Too many failed authentication attempts. Please try again later.', 'flatwp' ),
+				__( 'Too many failed authentication attempts. Please try again later.', 'flatwp-wordpress-connector' ),
 				array( 'status' => 429 )
 			);
 		}
