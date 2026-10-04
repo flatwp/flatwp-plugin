@@ -7,7 +7,13 @@
   "category": "flatwp",
   "icon": "chart-bar",
   "description": "Display key statistics and metrics in a grid layout.",
-  "keywords": ["statistics", "stats", "numbers", "metrics", "counter"],
+  "keywords": [
+    "statistics",
+    "stats",
+    "numbers",
+    "metrics",
+    "counter"
+  ],
   "textdomain": "flatwp",
   "attributes": {
     "heading": {
@@ -17,12 +23,19 @@
     "columns": {
       "type": "string",
       "default": "4",
-      "enum": ["2", "3", "4"]
+      "enum": [
+        "2",
+        "3",
+        "4"
+      ]
     }
   },
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "className": true,
     "color": {
       "background": true,
@@ -33,8 +46,11 @@
       "padding": true
     }
   },
-  "allowedBlocks": ["flatwp/stat-item"],
+  "allowedBlocks": [
+    "flatwp/stat-item"
+  ],
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
 }

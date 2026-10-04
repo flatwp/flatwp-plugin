@@ -17,12 +17,13 @@ class FlatWP_Admin {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_admin_pages' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_app' ) );
+		add_action( 'admin_head', array( $this, 'output_app_config' ) );
 	}
 
 	public function register_admin_pages() {
 		add_menu_page(
-			__( 'FlatWP', 'flatwp-wordpress-connector' ),
-			__( 'FlatWP', 'flatwp-wordpress-connector' ),
+			__( 'FlatWP', 'flatwp-headless-connector' ),
+			__( 'FlatWP', 'flatwp-headless-connector' ),
 			'manage_options',
 			'flatwp',
 			array( $this, 'render_admin_app' ),
@@ -33,7 +34,8 @@ class FlatWP_Admin {
 
 	public function enqueue_admin_app( $hook ) {
 		// Only load on FlatWP admin pages
-		if ( strpos( $hook, 'flatwp-wordpress-connector' ) === false ) {
+		// Hook is 'toplevel_page_flatwp' for our menu page
+		if ( strpos( $hook, 'flatwp' ) === false ) {
 			return;
 		}
 
@@ -47,8 +49,8 @@ class FlatWP_Admin {
 					?>
 					<div class="notice notice-error">
 						<p>
-							<strong><?php esc_html_e( 'FlatWP:', 'flatwp-wordpress-connector' ); ?></strong>
-							<?php esc_html_e( 'React admin app not compiled. Please run: cd admin-react && npm install && npm run build', 'flatwp-wordpress-connector' ); ?>
+							<strong><?php esc_html_e( 'FlatWP:', 'flatwp-headless-connector' ); ?></strong>
+							<?php esc_html_e( 'React admin app not compiled. Please run: cd admin-react && npm install && npm run build', 'flatwp-headless-connector' ); ?>
 						</p>
 					</div>
 					<?php
@@ -74,7 +76,8 @@ class FlatWP_Admin {
 			'script_loader_tag',
 			function( $tag, $handle, $src ) {
 				if ( 'flatwp-admin-app' === $handle ) {
-					$tag = '<script type="module" crossorigin src="' . esc_url( $src ) . '"></script>';
+					// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- Script IS enqueued, just modifying the tag via filter
+					$tag = '<script type="module" crossorigin src="' . esc_url( $src ) . '"></script>' . "\n";
 				}
 				return $tag;
 			},
@@ -91,19 +94,31 @@ class FlatWP_Admin {
 			);
 		}
 
-		// Localize script with data - MUST come before script tag is printed
-		wp_localize_script(
-			'flatwp-admin-app',
-			'flatwpReactAdmin',
-			array(
-				'apiUrl'    => rest_url( 'flatwp/v1' ),
-				'nonce'     => wp_create_nonce( 'wp_rest' ),
-				'pluginUrl' => FLATWP_PLUGIN_URL,
-				'version'   => FLATWP_VERSION,
-				'siteUrl'   => get_site_url(),
-				'adminUrl'  => admin_url(),
-			)
+	}
+
+	/**
+	 * Output app configuration in admin head.
+	 * This ensures the config is available before ES modules load.
+	 */
+	public function output_app_config() {
+		$screen = get_current_screen();
+		if ( ! $screen || strpos( $screen->id, 'flatwp' ) === false ) {
+			return;
+		}
+
+		$config = array(
+			'apiUrl'    => rest_url( 'flatwp/v1' ),
+			'nonce'     => wp_create_nonce( 'wp_rest' ),
+			'pluginUrl' => FLATWP_PLUGIN_URL,
+			'version'   => FLATWP_VERSION,
+			'siteUrl'   => get_site_url(),
+			'adminUrl'  => admin_url(),
 		);
+		?>
+		<script>
+			window.flatwpReactAdmin = <?php echo wp_json_encode( $config ); ?>;
+		</script>
+		<?php
 	}
 
 	public function render_admin_app() {

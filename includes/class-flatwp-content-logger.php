@@ -337,8 +337,10 @@ class FlatWP_Content_Logger {
 	 */
 	public function detect_bulk_actions() {
 		// Check if this is a bulk action
-		$action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : false;
-		$action2 = isset( $_REQUEST['action2'] ) ? $_REQUEST['action2'] : false;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified by WordPress core in admin list tables
+		$action = isset( $_REQUEST['action'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ) : false;
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified by WordPress core in admin list tables
+		$action2 = isset( $_REQUEST['action2'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['action2'] ) ) : false;
 		$bulk_action = $action !== -1 ? $action : $action2;
 
 		if ( ! $bulk_action || $bulk_action === -1 ) {
@@ -346,14 +348,16 @@ class FlatWP_Content_Logger {
 		}
 
 		// Get selected posts
-		$post_ids = isset( $_REQUEST['post'] ) ? array_map( 'intval', (array) $_REQUEST['post'] ) : array();
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified by WordPress core in admin list tables
+		$post_ids = isset( $_REQUEST['post'] ) ? array_map( 'intval', (array) wp_unslash( $_REQUEST['post'] ) ) : array();
 
 		if ( empty( $post_ids ) ) {
 			return;
 		}
 
 		$post_count = count( $post_ids );
-		$post_type = isset( $_REQUEST['post_type'] ) ? $_REQUEST['post_type'] : 'post';
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nonce verified by WordPress core in admin list tables
+		$post_type = isset( $_REQUEST['post_type'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['post_type'] ) ) : 'post';
 		$post_type_obj = get_post_type_object( $post_type );
 		$post_type_label = $post_type_obj ? $post_type_obj->labels->name : $post_type;
 

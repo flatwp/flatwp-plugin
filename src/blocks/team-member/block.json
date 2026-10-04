@@ -7,9 +7,16 @@
   "category": "flatwp",
   "icon": "admin-users",
   "description": "A single team member card with photo, name, role, and bio.",
-  "keywords": ["team", "member", "person", "staff"],
+  "keywords": [
+    "team",
+    "member",
+    "person",
+    "staff"
+  ],
   "textdomain": "flatwp",
-  "parent": ["flatwp/team"],
+  "parent": [
+    "flatwp/team"
+  ],
   "attributes": {
     "name": {
       "type": "string",
@@ -47,5 +54,6 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
 }

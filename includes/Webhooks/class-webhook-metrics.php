@@ -27,6 +27,7 @@ class FlatWP_Webhook_Metrics {
 
 		$table = $wpdb->prefix . self::TABLE_NAME;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin metrics table requires direct queries
 		$wpdb->insert(
 			$table,
 			array(
@@ -52,8 +53,10 @@ class FlatWP_Webhook_Metrics {
 
 		$table = $wpdb->prefix . self::TABLE_NAME;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin metrics table requires direct queries
 		$metrics = $wpdb->get_results(
 			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is safely constructed using $wpdb->prefix
 				"SELECT
 					status,
 					COUNT(*) as count,
@@ -82,8 +85,10 @@ class FlatWP_Webhook_Metrics {
 
 		$table = $wpdb->prefix . self::TABLE_NAME;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin metrics table requires direct queries
 		$stats = $wpdb->get_row(
 			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is safely constructed using $wpdb->prefix
 				"SELECT
 					COUNT(*) as total,
 					SUM(CASE WHEN status = 'success' THEN 1 ELSE 0 END) as success_count,
@@ -125,8 +130,10 @@ class FlatWP_Webhook_Metrics {
 
 		$table = $wpdb->prefix . self::TABLE_NAME;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin metrics table requires direct queries
 		return $wpdb->get_results(
 			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is safely constructed using $wpdb->prefix
 				"SELECT
 					id,
 					target_id,
@@ -153,8 +160,10 @@ class FlatWP_Webhook_Metrics {
 
 		$table = $wpdb->prefix . self::TABLE_NAME;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin metrics table requires direct queries
 		return $wpdb->query(
 			$wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name is safely constructed using $wpdb->prefix
 				"DELETE FROM {$table}
 				WHERE created_at < DATE_SUB(NOW(), INTERVAL %d DAY)",
 				$days

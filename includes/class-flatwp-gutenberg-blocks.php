@@ -116,7 +116,7 @@ class FlatWP_Gutenberg_Blocks {
 					$categories,
 					array(
 						'slug'  => 'flatwp',
-						'title' => __( 'FlatWP', 'flatwp-wordpress-connector' ),
+						'title' => __( 'FlatWP', 'flatwp-headless-connector' ),
 						'icon'  => 'layout',
 					)
 				);

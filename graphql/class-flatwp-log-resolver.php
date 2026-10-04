@@ -178,7 +178,8 @@ class FlatWP_Log_Resolver {
 
 		$where_clause = implode( ' AND ', $where );
 
-		$count = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table_name} WHERE {$where_clause}" ); // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Custom plugin logging table requires direct queries; table name safely uses $wpdb->prefix
+		$count = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table_name} WHERE {$where_clause}" );
 
 		return $count;
 	}

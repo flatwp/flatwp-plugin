@@ -7,11 +7,19 @@
   "category": "flatwp",
   "icon": "align-left",
   "description": "Content section with icon or image and text",
-  "keywords": ["icon", "text", "image", "content"],
+  "keywords": [
+    "icon",
+    "text",
+    "image",
+    "content"
+  ],
   "textdomain": "flatwp",
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "anchor": true,
     "className": true
   },
@@ -19,7 +27,10 @@
     "mediaType": {
       "type": "string",
       "default": "icon",
-      "enum": ["icon", "image"]
+      "enum": [
+        "icon",
+        "image"
+      ]
     },
     "icon": {
       "type": "string",
@@ -54,25 +65,44 @@
     "layout": {
       "type": "string",
       "default": "horizontal",
-      "enum": ["horizontal", "horizontal-reverse", "vertical", "vertical-centered"]
+      "enum": [
+        "horizontal",
+        "horizontal-reverse",
+        "vertical",
+        "vertical-centered"
+      ]
     },
     "mediaSize": {
       "type": "string",
       "default": "medium",
-      "enum": ["small", "medium", "large", "xlarge"]
+      "enum": [
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ]
     },
     "colorScheme": {
       "type": "string",
       "default": "light",
-      "enum": ["light", "dark", "transparent"]
+      "enum": [
+        "light",
+        "dark",
+        "transparent"
+      ]
     },
     "iconStyle": {
       "type": "string",
       "default": "filled",
-      "enum": ["filled", "outlined", "minimal"]
+      "enum": [
+        "filled",
+        "outlined",
+        "minimal"
+      ]
     }
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css"
+  "style": "file:./style.css",
+  "render": "file:./render.php"
 }

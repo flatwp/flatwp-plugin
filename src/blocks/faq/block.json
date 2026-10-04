@@ -7,11 +7,19 @@
   "category": "flatwp",
   "icon": "editor-help",
   "description": "Frequently asked questions with smooth accordion animation",
-  "keywords": ["faq", "accordion", "questions", "answers"],
+  "keywords": [
+    "faq",
+    "accordion",
+    "questions",
+    "answers"
+  ],
   "textdomain": "flatwp",
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "anchor": true,
     "className": true
   },
@@ -31,17 +39,29 @@
     "layout": {
       "type": "string",
       "default": "stacked",
-      "enum": ["stacked", "two-column", "side-by-side"]
+      "enum": [
+        "stacked",
+        "two-column",
+        "side-by-side"
+      ]
     },
     "colorScheme": {
       "type": "string",
       "default": "light",
-      "enum": ["light", "dark", "transparent"]
+      "enum": [
+        "light",
+        "dark",
+        "transparent"
+      ]
     },
     "iconStyle": {
       "type": "string",
       "default": "chevron",
-      "enum": ["chevron", "plus", "arrow"]
+      "enum": [
+        "chevron",
+        "plus",
+        "arrow"
+      ]
     },
     "allowMultipleOpen": {
       "type": "boolean",
@@ -50,7 +70,11 @@
     "borderStyle": {
       "type": "string",
       "default": "divider",
-      "enum": ["none", "divider", "card"]
+      "enum": [
+        "none",
+        "divider",
+        "card"
+      ]
     }
   },
   "providesContext": {
@@ -61,5 +85,6 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
   "style": "file:./style.css",
-  "viewScript": "file:./view.js"
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php"
 }

@@ -7,7 +7,13 @@
   "category": "flatwp",
   "icon": "groups",
   "description": "Display team members in a grid layout.",
-  "keywords": ["team", "members", "staff", "people", "about"],
+  "keywords": [
+    "team",
+    "members",
+    "staff",
+    "people",
+    "about"
+  ],
   "textdomain": "flatwp",
   "attributes": {
     "heading": {
@@ -17,12 +23,19 @@
     "columns": {
       "type": "string",
       "default": "3",
-      "enum": ["2", "3", "4"]
+      "enum": [
+        "2",
+        "3",
+        "4"
+      ]
     }
   },
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "className": true,
     "color": {
       "background": true,
@@ -33,8 +46,11 @@
       "padding": true
     }
   },
-  "allowedBlocks": ["flatwp/team-member"],
+  "allowedBlocks": [
+    "flatwp/team-member"
+  ],
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
 }

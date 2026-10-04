@@ -32,7 +32,7 @@ class FlatWP_Page_Settings {
 	public function add_meta_box() {
 		add_meta_box(
 			'flatwp_page_settings',
-			__( 'FlatWP Page Settings', 'flatwp-wordpress-connector' ),
+			__( 'FlatWP Page Settings', 'flatwp-headless-connector' ),
 			array( $this, 'render_meta_box' ),
 			'page',
 			'side',
@@ -51,7 +51,7 @@ class FlatWP_Page_Settings {
 
 		// Get current values.
 		$hide_title       = (bool) get_post_meta( $post->ID, '_flatwp_hide_title', true );
-		$container_width  = get_post_meta( $post->ID, '_flatwp_container_width', true ) ?: 'default';
+		$container_width  = get_post_meta( $post->ID, '_flatwp_container_width', true ) ?: 'contained';
 		$hide_header      = (bool) get_post_meta( $post->ID, '_flatwp_hide_header', true );
 		$hide_footer      = (bool) get_post_meta( $post->ID, '_flatwp_hide_footer', true );
 		$custom_css_class = get_post_meta( $post->ID, '_flatwp_custom_css_class', true );
@@ -100,24 +100,21 @@ class FlatWP_Page_Settings {
 						value="1"
 						<?php checked( $hide_title, true ); ?>
 					/>
-					<span><?php esc_html_e( 'Hide Page Title', 'flatwp-wordpress-connector' ); ?></span>
+					<span><?php esc_html_e( 'Hide Page Title', 'flatwp-headless-connector' ); ?></span>
 				</label>
 			</p>
 
 			<!-- Container Width -->
 			<p>
 				<span class="setting-label">
-					<?php esc_html_e( 'Container Width', 'flatwp-wordpress-connector' ); ?>
+					<?php esc_html_e( 'Container Width', 'flatwp-headless-connector' ); ?>
 				</span>
 				<select name="flatwp_container_width">
-					<option value="default" <?php selected( $container_width, 'default' ); ?>>
-						<?php esc_html_e( 'Default', 'flatwp-wordpress-connector' ); ?>
-					</option>
 					<option value="contained" <?php selected( $container_width, 'contained' ); ?>>
-						<?php esc_html_e( 'Contained', 'flatwp-wordpress-connector' ); ?>
+						<?php esc_html_e( 'Contained', 'flatwp-headless-connector' ); ?>
 					</option>
 					<option value="full-width" <?php selected( $container_width, 'full-width' ); ?>>
-						<?php esc_html_e( 'Full Width', 'flatwp-wordpress-connector' ); ?>
+						<?php esc_html_e( 'Full Width', 'flatwp-headless-connector' ); ?>
 					</option>
 				</select>
 			</p>
@@ -131,7 +128,7 @@ class FlatWP_Page_Settings {
 						value="1"
 						<?php checked( $hide_header, true ); ?>
 					/>
-					<span><?php esc_html_e( 'Hide Site Header', 'flatwp-wordpress-connector' ); ?></span>
+					<span><?php esc_html_e( 'Hide Site Header', 'flatwp-headless-connector' ); ?></span>
 				</label>
 			</p>
 
@@ -144,23 +141,23 @@ class FlatWP_Page_Settings {
 						value="1"
 						<?php checked( $hide_footer, true ); ?>
 					/>
-					<span><?php esc_html_e( 'Hide Site Footer', 'flatwp-wordpress-connector' ); ?></span>
+					<span><?php esc_html_e( 'Hide Site Footer', 'flatwp-headless-connector' ); ?></span>
 				</label>
 			</p>
 
 			<!-- Custom CSS Class -->
 			<p>
 				<span class="setting-label">
-					<?php esc_html_e( 'Custom CSS Classes', 'flatwp-wordpress-connector' ); ?>
+					<?php esc_html_e( 'Custom CSS Classes', 'flatwp-headless-connector' ); ?>
 				</span>
 				<input
 					type="text"
 					name="flatwp_custom_css_class"
 					value="<?php echo esc_attr( $custom_css_class ); ?>"
-					placeholder="<?php esc_attr_e( 'my-custom-class another-class', 'flatwp-wordpress-connector' ); ?>"
+					placeholder="<?php esc_attr_e( 'my-custom-class another-class', 'flatwp-headless-connector' ); ?>"
 				/>
 				<span class="setting-description">
-					<?php esc_html_e( 'Space-separated CSS classes for custom styling.', 'flatwp-wordpress-connector' ); ?>
+					<?php esc_html_e( 'Space-separated CSS classes for custom styling.', 'flatwp-headless-connector' ); ?>
 				</span>
 			</p>
 		</div>
@@ -181,7 +178,7 @@ class FlatWP_Page_Settings {
 
 		// Verify nonce.
 		if ( ! isset( $_POST['flatwp_page_settings_nonce'] ) ||
-		     ! wp_verify_nonce( $_POST['flatwp_page_settings_nonce'], 'flatwp_page_settings_nonce' ) ) {
+		     ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['flatwp_page_settings_nonce'] ) ), 'flatwp_page_settings_nonce' ) ) {
 			return;
 		}
 
@@ -201,11 +198,11 @@ class FlatWP_Page_Settings {
 
 		// Save container width.
 		$container_width = isset( $_POST['flatwp_container_width'] )
-			? sanitize_text_field( $_POST['flatwp_container_width'] )
-			: 'default';
-		$allowed_widths = array( 'default', 'contained', 'full-width' );
+			? sanitize_text_field( wp_unslash( $_POST['flatwp_container_width'] ) )
+			: 'contained';
+		$allowed_widths = array( 'contained', 'full-width' );
 		if ( ! in_array( $container_width, $allowed_widths, true ) ) {
-			$container_width = 'default';
+			$container_width = 'contained';
 		}
 		update_post_meta( $post_id, '_flatwp_container_width', $container_width );
 
@@ -219,7 +216,7 @@ class FlatWP_Page_Settings {
 
 		// Save custom CSS class.
 		$custom_css_class = isset( $_POST['flatwp_custom_css_class'] )
-			? sanitize_text_field( $_POST['flatwp_custom_css_class'] )
+			? sanitize_text_field( wp_unslash( $_POST['flatwp_custom_css_class'] ) )
 			: '';
 		update_post_meta( $post_id, '_flatwp_custom_css_class', $custom_css_class );
 	}
@@ -231,9 +228,15 @@ class FlatWP_Page_Settings {
 	 * @return array Page settings.
 	 */
 	public function get_settings( $post_id ) {
+		$container_width = get_post_meta( $post_id, '_flatwp_container_width', true );
+		// Convert legacy 'default' value to 'contained' for backwards compatibility.
+		if ( empty( $container_width ) || 'default' === $container_width ) {
+			$container_width = 'contained';
+		}
+
 		return array(
 			'hideTitle'      => (bool) get_post_meta( $post_id, '_flatwp_hide_title', true ),
-			'containerWidth' => get_post_meta( $post_id, '_flatwp_container_width', true ) ?: 'default',
+			'containerWidth' => $container_width,
 			'hideHeader'     => (bool) get_post_meta( $post_id, '_flatwp_hide_header', true ),
 			'hideFooter'     => (bool) get_post_meta( $post_id, '_flatwp_hide_footer', true ),
 			'customCssClass' => get_post_meta( $post_id, '_flatwp_custom_css_class', true ) ?: '',

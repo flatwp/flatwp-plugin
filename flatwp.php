@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: FlatWP - WordPress Connector
+ * Plugin Name: FlatWP - Headless Connector
  * Plugin URI: https://flatwp.com
  * Description: Modern React-powered admin dashboard for FlatWP with Next.js integration, cache management, and real-time monitoring.
  * Version: 0.8.0
@@ -8,7 +8,7 @@
  * Author URI: https://flatwp.com
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: flatwp-wordpress-connector
+ * Text Domain: flatwp-headless-connector
  * Domain Path: /languages
  * Requires at least: 6.0
  * Requires PHP: 7.4
@@ -228,7 +228,7 @@ final class FlatWP_Companion {
 		require_once FLATWP_PLUGIN_DIR . 'includes/class-flatwp-menu-editor.php';
 
 		// Gutenberg Blocks.
-		require_once FLATWP_PLUGIN_DIR . 'includes/class-flatwp-gutenberg-blocks.php';
+		require_once FLATWP_PLUGIN_DIR . 'includes/class-flatwp-blocks.php';
 
 		// API.
 		require_once FLATWP_PLUGIN_DIR . 'api/class-flatwp-rest-api.php';
@@ -250,9 +250,6 @@ final class FlatWP_Companion {
 
 		// Initialize menu system EARLY (must run before 'init' to hook into 'after_setup_theme')
 		add_action( 'plugins_loaded', array( $this, 'init_menu_system' ), 1 );
-
-		// Load text domain early.
-		add_action( 'init', array( $this, 'load_textdomain' ), 5 );
 
 		// Initialize components.
 		add_action( 'init', array( $this, 'init' ), 10 );
@@ -310,8 +307,8 @@ final class FlatWP_Companion {
 
 		// Initialize Native Gutenberg Blocks (for custom FlatWP blocks)
 		// Core blocks are exposed via WPGraphQL Content Blocks plugin
-		if ( class_exists( 'FlatWP_Gutenberg_Blocks' ) ) {
-			$this->gutenberg_blocks = new FlatWP_Gutenberg_Blocks();
+		if ( class_exists( 'FlatWP_Blocks' ) ) {
+			$this->gutenberg_blocks = new FlatWP_Blocks();
 		}
 
 		// Menu system already initialized early in init_menu_system()
@@ -349,8 +346,8 @@ final class FlatWP_Companion {
 		if ( version_compare( get_bloginfo( 'version' ), '6.0', '<' ) ) {
 			deactivate_plugins( FLATWP_PLUGIN_BASENAME );
 			wp_die(
-				esc_html__( 'FlatWP - WordPress Connector requires WordPress 6.0 or higher.', 'flatwp-wordpress-connector' ),
-				esc_html__( 'Plugin Activation Error', 'flatwp-wordpress-connector' ),
+				esc_html__( 'FlatWP - Headless Connector requires WordPress 6.0 or higher.', 'flatwp-headless-connector' ),
+				esc_html__( 'Plugin Activation Error', 'flatwp-headless-connector' ),
 				array( 'back_link' => true )
 			);
 		}
@@ -359,8 +356,8 @@ final class FlatWP_Companion {
 		if ( version_compare( PHP_VERSION, '7.4', '<' ) ) {
 			deactivate_plugins( FLATWP_PLUGIN_BASENAME );
 			wp_die(
-				esc_html__( 'FlatWP - WordPress Connector requires PHP 7.4 or higher.', 'flatwp-wordpress-connector' ),
-				esc_html__( 'Plugin Activation Error', 'flatwp-wordpress-connector' ),
+				esc_html__( 'FlatWP - Headless Connector requires PHP 7.4 or higher.', 'flatwp-headless-connector' ),
+				esc_html__( 'Plugin Activation Error', 'flatwp-headless-connector' ),
 				array( 'back_link' => true )
 			);
 		}
@@ -443,17 +440,6 @@ final class FlatWP_Companion {
 		if ( ! get_option( 'flatwp_settings' ) ) {
 			add_option( 'flatwp_settings', $defaults );
 		}
-	}
-
-	/**
-	 * Load plugin text domain.
-	 */
-	public function load_textdomain() {
-		load_plugin_textdomain(
-			'flatwp',
-			false,
-			dirname( FLATWP_PLUGIN_BASENAME ) . '/languages'
-		);
 	}
 
 	/**

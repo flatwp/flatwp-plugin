@@ -123,11 +123,13 @@ class FlatWP_Frontend_Control {
 	 */
 	private function is_preview_request() {
 		// Check for preview query parameter
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only GET parameter check
 		if ( isset( $_GET['preview'] ) || isset( $_GET['preview_id'] ) ) {
 			return true;
 		}
 
 		// Check for FlatWP preview token
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only GET parameter check
 		if ( isset( $_GET['flatwp_preview_token'] ) ) {
 			return true;
 		}
@@ -157,8 +159,8 @@ class FlatWP_Frontend_Control {
 		// Validate Next.js URL is configured
 		if ( empty( $nextjs_url ) ) {
 			wp_die(
-				esc_html__( 'WordPress frontend is disabled. Next.js URL not configured.', 'flatwp-wordpress-connector' ),
-				esc_html__( 'Frontend Disabled', 'flatwp-wordpress-connector' ),
+				esc_html__( 'WordPress frontend is disabled. Next.js URL not configured.', 'flatwp-headless-connector' ),
+				esc_html__( 'Frontend Disabled', 'flatwp-headless-connector' ),
 				array( 'response' => 503 )
 			);
 		}
@@ -166,8 +168,8 @@ class FlatWP_Frontend_Control {
 		// Validate URL format to prevent open redirect
 		if ( ! filter_var( $nextjs_url, FILTER_VALIDATE_URL ) ) {
 			wp_die(
-				esc_html__( 'Invalid Next.js URL configuration.', 'flatwp-wordpress-connector' ),
-				esc_html__( 'Configuration Error', 'flatwp-wordpress-connector' ),
+				esc_html__( 'Invalid Next.js URL configuration.', 'flatwp-headless-connector' ),
+				esc_html__( 'Configuration Error', 'flatwp-headless-connector' ),
 				array( 'response' => 500 )
 			);
 		}
@@ -179,7 +181,7 @@ class FlatWP_Frontend_Control {
 		$redirect_url = trailingslashit( $nextjs_url ) . ltrim( $request_path, '/' );
 
 		// Perform redirect
-		wp_redirect( $redirect_url, 301 );
+		wp_safe_redirect( $redirect_url, 301 );
 		exit;
 	}
 
@@ -190,7 +192,7 @@ class FlatWP_Frontend_Control {
 		// If user is not logged in, redirect to login
 		if ( ! is_user_logged_in() ) {
 			$login_url = wp_login_url( $this->get_current_url() );
-			wp_redirect( $login_url );
+			wp_safe_redirect( $login_url );
 			exit;
 		}
 

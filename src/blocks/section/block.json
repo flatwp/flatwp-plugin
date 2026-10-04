@@ -7,11 +7,19 @@
   "category": "flatwp",
   "icon": "layout",
   "description": "A flexible section wrapper with background options and spacing controls",
-  "keywords": ["section", "container", "wrapper", "layout"],
+  "keywords": [
+    "section",
+    "container",
+    "wrapper",
+    "layout"
+  ],
   "textdomain": "flatwp",
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "anchor": true,
     "className": true
   },
@@ -19,12 +27,22 @@
     "colorScheme": {
       "type": "string",
       "default": "transparent",
-      "enum": ["light", "dark", "primary", "gradient", "transparent"]
+      "enum": [
+        "light",
+        "dark",
+        "primary",
+        "gradient",
+        "transparent"
+      ]
     },
     "backgroundType": {
       "type": "string",
       "default": "color",
-      "enum": ["color", "gradient", "image"]
+      "enum": [
+        "color",
+        "gradient",
+        "image"
+      ]
     },
     "backgroundImageUrl": {
       "type": "string"
@@ -47,35 +65,74 @@
     "gradientDirection": {
       "type": "string",
       "default": "to-br",
-      "enum": ["to-r", "to-l", "to-b", "to-t", "to-br", "to-bl", "to-tr", "to-tl"]
+      "enum": [
+        "to-r",
+        "to-l",
+        "to-b",
+        "to-t",
+        "to-br",
+        "to-bl",
+        "to-tr",
+        "to-tl"
+      ]
     },
     "paddingTop": {
       "type": "string",
       "default": "large",
-      "enum": ["none", "small", "medium", "large", "xlarge"]
+      "enum": [
+        "none",
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ]
     },
     "paddingBottom": {
       "type": "string",
       "default": "large",
-      "enum": ["none", "small", "medium", "large", "xlarge"]
+      "enum": [
+        "none",
+        "small",
+        "medium",
+        "large",
+        "xlarge"
+      ]
     },
     "containerWidth": {
       "type": "string",
       "default": "default",
-      "enum": ["narrow", "default", "wide", "full"]
+      "enum": [
+        "narrow",
+        "default",
+        "wide",
+        "full"
+      ]
     },
     "dividerTop": {
       "type": "string",
       "default": "none",
-      "enum": ["none", "wave", "curve", "triangle", "slant"]
+      "enum": [
+        "none",
+        "wave",
+        "curve",
+        "triangle",
+        "slant"
+      ]
     },
     "dividerBottom": {
       "type": "string",
       "default": "none",
-      "enum": ["none", "wave", "curve", "triangle", "slant"]
+      "enum": [
+        "none",
+        "wave",
+        "curve",
+        "triangle",
+        "slant"
+      ]
     }
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css"
+  "style": "file:./style.css",
+  "render": "file:./render.php"
 }

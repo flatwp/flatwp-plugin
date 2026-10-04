@@ -4,5 +4,6 @@ admin-react/dist/
 admin-react/node_modules/
 build/
 releases/
+release/
 *.zip
 .DS_Store

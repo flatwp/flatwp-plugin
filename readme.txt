@@ -1,6 +1,6 @@
-=== FlatWP - WordPress Connector ===
+=== FlatWP - Headless Connector ===
 Contributors: flatwp
-Tags: headless, next.js, react, wordpress, graphql
+Tags: headless, next.js, react, graphql, api
 Requires at least: 6.0
 Tested up to: 6.9
 Requires PHP: 7.4
@@ -12,7 +12,7 @@ Modern React-powered admin dashboard for FlatWP with Next.js integration, cache 
 
 == Description ==
 
-FlatWP - WordPress Connector is a powerful WordPress plugin designed specifically for headless WordPress setups using Next.js. It provides a modern, React-based admin interface with real-time monitoring, cache management, and seamless integration with your Next.js frontend.
+FlatWP - Headless Connector is a powerful WordPress plugin designed specifically for headless WordPress setups using Next.js. It provides a modern, React-based admin interface with real-time monitoring, cache management, and seamless integration with your Next.js frontend.
 
 **Key Features:**
 

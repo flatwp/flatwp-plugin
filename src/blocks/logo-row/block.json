@@ -7,7 +7,13 @@
   "category": "flatwp",
   "icon": "images-alt2",
   "description": "Display partner or client logos with optional grayscale effect.",
-  "keywords": ["logos", "partners", "clients", "brands", "trusted"],
+  "keywords": [
+    "logos",
+    "partners",
+    "clients",
+    "brands",
+    "trusted"
+  ],
   "textdomain": "flatwp",
   "attributes": {
     "heading": {
@@ -24,7 +30,11 @@
     "displayMode": {
       "type": "string",
       "default": "grayscale-hover",
-      "enum": ["color", "grayscale", "grayscale-hover"]
+      "enum": [
+        "color",
+        "grayscale",
+        "grayscale-hover"
+      ]
     },
     "columns": {
       "type": "number",
@@ -33,7 +43,11 @@
     "logoSize": {
       "type": "string",
       "default": "medium",
-      "enum": ["small", "medium", "large"]
+      "enum": [
+        "small",
+        "medium",
+        "large"
+      ]
     },
     "alignment": {
       "type": "string",
@@ -42,7 +56,11 @@
     "colorScheme": {
       "type": "string",
       "default": "light",
-      "enum": ["light", "dark", "transparent"]
+      "enum": [
+        "light",
+        "dark",
+        "transparent"
+      ]
     },
     "showHeading": {
       "type": "boolean",
@@ -51,7 +69,10 @@
   },
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "className": true,
     "spacing": {
       "margin": true,
@@ -60,5 +81,6 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
 }

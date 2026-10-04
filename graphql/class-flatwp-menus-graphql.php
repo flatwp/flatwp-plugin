@@ -150,12 +150,10 @@ class FlatWP_Menus_GraphQL {
 						// WPGraphQL passes the database ID directly
 						$id = isset( $item->databaseId ) ? $item->databaseId : ( isset( $item->ID ) ? $item->ID : null );
 						if ( ! $id ) {
-							error_log( 'FlatWP flatwpIcon: No ID found on item. Available properties: ' . print_r( $item, true ) );
 							return '';
 						}
 						return FlatWP_Site_Settings::get_menu_item_icon( $id );
 					} catch ( Exception $e ) {
-						error_log( 'FlatWP flatwpIcon error: ' . $e->getMessage() );
 						return '';
 					}
 				},
@@ -173,12 +171,10 @@ class FlatWP_Menus_GraphQL {
 						// WPGraphQL passes the database ID directly
 						$id = isset( $item->databaseId ) ? $item->databaseId : ( isset( $item->ID ) ? $item->ID : null );
 						if ( ! $id ) {
-							error_log( 'FlatWP flatwpBadge: No ID found on item' );
 							return '';
 						}
 						return FlatWP_Site_Settings::get_menu_item_badge( $id );
 					} catch ( Exception $e ) {
-						error_log( 'FlatWP flatwpBadge error: ' . $e->getMessage() );
 						return '';
 					}
 				},

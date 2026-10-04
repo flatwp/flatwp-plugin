@@ -628,7 +628,7 @@ class FlatWP_REST_API {
 		if ( empty( $nextjs_url ) ) {
 			return new WP_Error(
 				'no_url',
-				__( 'Next.js URL not configured', 'flatwp-wordpress-connector' ),
+				__( 'Next.js URL not configured', 'flatwp-headless-connector' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -696,7 +696,7 @@ class FlatWP_REST_API {
 			array(
 				'success' => $connected,
 				'data'    => $status,
-				'message' => $connected ? __( 'Connection successful', 'flatwp-wordpress-connector' ) : __( 'Connection failed', 'flatwp-wordpress-connector' ),
+				'message' => $connected ? __( 'Connection successful', 'flatwp-headless-connector' ) : __( 'Connection failed', 'flatwp-headless-connector' ),
 			)
 		);
 	}
@@ -713,15 +713,15 @@ class FlatWP_REST_API {
 
 		// Determine overall status
 		$status = 'disconnected';
-		$status_message = __( 'Not configured', 'flatwp-wordpress-connector' );
+		$status_message = __( 'Not configured', 'flatwp-headless-connector' );
 
 		if ( ! empty( $nextjs_url ) ) {
 			if ( $last_connection_test && $test_connection_details && $test_connection_details['http_code'] === 200 ) {
 				$status = 'connected';
-				$status_message = __( 'Connected and healthy', 'flatwp-wordpress-connector' );
+				$status_message = __( 'Connected and healthy', 'flatwp-headless-connector' );
 			} elseif ( $last_connection_test ) {
 				$status = 'degraded';
-				$status_message = __( 'Connection issues detected', 'flatwp-wordpress-connector' );
+				$status_message = __( 'Connection issues detected', 'flatwp-headless-connector' );
 			}
 		}
 
@@ -758,7 +758,7 @@ class FlatWP_REST_API {
 		if ( empty( $nextjs_url ) || empty( $secret ) ) {
 			return new WP_Error(
 				'missing_config',
-				__( 'Next.js URL or secret not configured', 'flatwp-wordpress-connector' ),
+				__( 'Next.js URL or secret not configured', 'flatwp-headless-connector' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -800,7 +800,7 @@ class FlatWP_REST_API {
 					),
 					'url' => $webhook_url,
 				),
-				'message' => __( 'Webhook test successful! Next.js endpoint is responding correctly.', 'flatwp-wordpress-connector' ),
+				'message' => __( 'Webhook test successful! Next.js endpoint is responding correctly.', 'flatwp-headless-connector' ),
 			)
 		);
 	}
@@ -829,7 +829,7 @@ class FlatWP_REST_API {
 		if ( ! $revalidation ) {
 			return new WP_Error(
 				'revalidation_unavailable',
-				__( 'Revalidation functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Revalidation functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -872,7 +872,7 @@ class FlatWP_REST_API {
 		return rest_ensure_response(
 			array(
 				'success' => true,
-				'message' => __( 'Cache cleared successfully', 'flatwp-wordpress-connector' ),
+				'message' => __( 'Cache cleared successfully', 'flatwp-headless-connector' ),
 				'data'    => array(
 					'type'  => $type,
 					'paths' => $paths,
@@ -891,7 +891,7 @@ class FlatWP_REST_API {
 		if ( ! $revalidation ) {
 			return new WP_Error(
 				'revalidation_unavailable',
-				__( 'Revalidation functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Revalidation functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -933,7 +933,7 @@ class FlatWP_REST_API {
 			array(
 				'success' => true,
 				/* translators: %s: cache path */
-				'message' => sprintf( __( 'Cache cleared for path: %s', 'flatwp-wordpress-connector' ), $path ),
+				'message' => sprintf( __( 'Cache cleared for path: %s', 'flatwp-headless-connector' ), $path ),
 			)
 		);
 	}
@@ -972,7 +972,7 @@ class FlatWP_REST_API {
 		return rest_ensure_response(
 			array(
 				'success' => true,
-				'message' => __( 'Settings updated successfully', 'flatwp-wordpress-connector' ),
+				'message' => __( 'Settings updated successfully', 'flatwp-headless-connector' ),
 				'data'    => $updated_settings,
 			)
 		);
@@ -992,7 +992,7 @@ class FlatWP_REST_API {
 		if ( ! $logger ) {
 			return new WP_Error(
 				'logger_unavailable',
-				__( 'Logger not available', 'flatwp-wordpress-connector' ),
+				__( 'Logger not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1508,9 +1508,9 @@ class FlatWP_REST_API {
 					$url_validation = $this->security->validate_nextjs_url( $url, true );
 
 					if ( is_wp_error( $url_validation ) ) {
-						/* translators: %s: validation error message */
 						$errors[] = sprintf(
-							__( 'Next.js URL validation failed: %s', 'flatwp-wordpress-connector' ),
+							// translators: %s is the validation error message.
+							__( 'Next.js URL validation failed: %s', 'flatwp-headless-connector' ),
 							$url_validation->get_error_message()
 						);
 						// Keep the old value if validation fails
@@ -1535,9 +1535,9 @@ class FlatWP_REST_API {
 
 						// Add warning for weak secrets
 						if ( $secret_validation['strength'] === 'weak' || $secret_validation['strength'] === 'medium' ) {
-							/* translators: %s: validation error message */
-						$errors[] = sprintf(
-								__( 'API Secret Strength: %1$s - %2$s', 'flatwp-wordpress-connector' ),
+							$errors[] = sprintf(
+								// translators: %1$s is the strength level (weak/medium/strong), %2$s is the detailed messages.
+								__( 'API Secret Strength: %1$s - %2$s', 'flatwp-headless-connector' ),
 								ucfirst( $secret_validation['strength'] ),
 								implode( ' ', $secret_validation['messages'] )
 							);
@@ -1579,7 +1579,7 @@ class FlatWP_REST_API {
 				$sanitized['frontend_behavior'] = $behavior;
 			} else {
 				$sanitized['frontend_behavior'] = 'normal'; // Default to normal if invalid value
-				$errors[] = __( 'Invalid frontend behavior value, defaulting to normal', 'flatwp-wordpress-connector' );
+				$errors[] = __( 'Invalid frontend behavior value, defaulting to normal', 'flatwp-headless-connector' );
 			}
 		}
 
@@ -1605,7 +1605,7 @@ class FlatWP_REST_API {
 		if ( ! $revalidation ) {
 			return new WP_Error(
 				'revalidation_unavailable',
-				__( 'Revalidation functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Revalidation functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1651,7 +1651,7 @@ class FlatWP_REST_API {
 		if ( class_exists( 'FlatWP_Dashboard_Widget' ) ) {
 			FlatWP_Dashboard_Widget::log_activity(
 				sprintf(
-					/* translators: %d: number of paths */ __( 'Revalidated all content (%d paths)', 'flatwp-wordpress-connector' ),
+					/* translators: %d: number of paths */ __( 'Revalidated all content (%d paths)', 'flatwp-headless-connector' ),
 					count( $paths )
 				)
 			);
@@ -1661,7 +1661,7 @@ class FlatWP_REST_API {
 			array(
 				'success' => true,
 				'message' => sprintf(
-					/* translators: %d: number of paths */ __( 'Successfully triggered revalidation for %d paths', 'flatwp-wordpress-connector' ),
+					/* translators: %d: number of paths */ __( 'Successfully triggered revalidation for %d paths', 'flatwp-headless-connector' ),
 					count( $paths )
 				),
 				'data'    => array(
@@ -1705,7 +1705,7 @@ class FlatWP_REST_API {
 		if ( empty( $token ) ) {
 			return new WP_Error(
 				'missing_token',
-				__( 'Preview token is required', 'flatwp-wordpress-connector' ),
+				__( 'Preview token is required', 'flatwp-headless-connector' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -1716,7 +1716,7 @@ class FlatWP_REST_API {
 		if ( ! $preview ) {
 			return new WP_Error(
 				'preview_unavailable',
-				__( 'Preview functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Preview functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1727,7 +1727,7 @@ class FlatWP_REST_API {
 		if ( false === $token_data ) {
 			return new WP_Error(
 				'invalid_token',
-				__( 'Invalid or expired preview token', 'flatwp-wordpress-connector' ),
+				__( 'Invalid or expired preview token', 'flatwp-headless-connector' ),
 				array( 'status' => 401 )
 			);
 		}
@@ -1738,7 +1738,7 @@ class FlatWP_REST_API {
 		if ( ! $post ) {
 			return new WP_Error(
 				'post_not_found',
-				__( 'Post not found', 'flatwp-wordpress-connector' ),
+				__( 'Post not found', 'flatwp-headless-connector' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -1800,7 +1800,7 @@ class FlatWP_REST_API {
 		if ( ! $logger ) {
 			return new WP_Error(
 				'logger_unavailable',
-				__( 'Logger functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Logger functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1853,7 +1853,7 @@ class FlatWP_REST_API {
 		if ( ! $revalidation ) {
 			return new WP_Error(
 				'revalidation_unavailable',
-				__( 'Revalidation functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Revalidation functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1877,7 +1877,7 @@ class FlatWP_REST_API {
 		if ( ! $logger ) {
 			return new WP_Error(
 				'logger_unavailable',
-				__( 'Logger functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Logger functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1901,7 +1901,7 @@ class FlatWP_REST_API {
 		if ( ! $revalidation ) {
 			return new WP_Error(
 				'revalidation_unavailable',
-				__( 'Revalidation functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Revalidation functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1914,7 +1914,7 @@ class FlatWP_REST_API {
 		return rest_ensure_response(
 			array(
 				'success' => true,
-				'message' => __( 'Revalidation settings updated successfully', 'flatwp-wordpress-connector' ),
+				'message' => __( 'Revalidation settings updated successfully', 'flatwp-headless-connector' ),
 				'data'    => $updated_settings,
 			)
 		);
@@ -1929,7 +1929,7 @@ class FlatWP_REST_API {
 		if ( ! $logger ) {
 			return new WP_Error(
 				'logger_unavailable',
-				__( 'Logger functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Logger functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1953,7 +1953,7 @@ class FlatWP_REST_API {
 		if ( ! $logger ) {
 			return new WP_Error(
 				'logger_unavailable',
-				__( 'Logger functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Logger functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1963,16 +1963,16 @@ class FlatWP_REST_API {
 		if ( $type && $type !== 'all' ) {
 			$result = $logger->clear_logs_by_type( $type );
 			/* translators: %s: log type */
-			$message = sprintf( __( 'Logs of type "%s" cleared successfully', 'flatwp-wordpress-connector' ), $type );
+			$message = sprintf( __( 'Logs of type "%s" cleared successfully', 'flatwp-headless-connector' ), $type );
 		} else {
 			$result = $logger->clear_logs();
-			$message = __( 'All logs cleared successfully', 'flatwp-wordpress-connector' );
+			$message = __( 'All logs cleared successfully', 'flatwp-headless-connector' );
 		}
 
 		if ( ! $result ) {
 			return new WP_Error(
 				'clear_failed',
-				__( 'Failed to clear logs', 'flatwp-wordpress-connector' ),
+				__( 'Failed to clear logs', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -1994,7 +1994,7 @@ class FlatWP_REST_API {
 		if ( ! $revalidation ) {
 			return new WP_Error(
 				'revalidation_unavailable',
-				__( 'Revalidation functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Revalidation functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -2039,7 +2039,7 @@ class FlatWP_REST_API {
 				if ( empty( $path ) ) {
 					return new WP_Error(
 						'missing_path',
-						__( 'Path parameter is required', 'flatwp-wordpress-connector' ),
+						__( 'Path parameter is required', 'flatwp-headless-connector' ),
 						array( 'status' => 400 )
 					);
 				}
@@ -2051,7 +2051,7 @@ class FlatWP_REST_API {
 				if ( empty( $post_type ) ) {
 					return new WP_Error(
 						'missing_post_type',
-						__( 'Post type parameter is required', 'flatwp-wordpress-connector' ),
+						__( 'Post type parameter is required', 'flatwp-headless-connector' ),
 						array( 'status' => 400 )
 					);
 				}
@@ -2082,7 +2082,7 @@ class FlatWP_REST_API {
 			default:
 				return new WP_Error(
 					'invalid_action',
-					__( 'Invalid action specified', 'flatwp-wordpress-connector' ),
+					__( 'Invalid action specified', 'flatwp-headless-connector' ),
 					array( 'status' => 400 )
 				);
 		}
@@ -2126,16 +2126,16 @@ class FlatWP_REST_API {
 		$message = '';
 		switch ( $action ) {
 			case 'all':
-				$message = sprintf( /* translators: %d: number of paths */ __( 'Successfully triggered revalidation for %d paths', 'flatwp-wordpress-connector' ), count( $paths ) );
+				$message = sprintf( /* translators: %d: number of paths */ __( 'Successfully triggered revalidation for %d paths', 'flatwp-headless-connector' ), count( $paths ) );
 				break;
 			case 'homepage':
-				$message = __( 'Homepage revalidated successfully', 'flatwp-wordpress-connector' );
+				$message = __( 'Homepage revalidated successfully', 'flatwp-headless-connector' );
 				break;
 			case 'path':
-				$message = sprintf( /* translators: %s: path */ __( 'Path %s revalidated successfully', 'flatwp-wordpress-connector' ), $request->get_param( 'path' ) );
+				$message = sprintf( /* translators: %s: path */ __( 'Path %s revalidated successfully', 'flatwp-headless-connector' ), $request->get_param( 'path' ) );
 				break;
 			case 'post_type':
-				$message = sprintf( /* translators: 1: post type, 2: number of paths */ __( 'All %1$s revalidated successfully (%2$d paths)', 'flatwp-wordpress-connector' ), $request->get_param( 'post_type' ), count( $paths ) );
+				$message = sprintf( /* translators: 1: post type, 2: number of paths */ __( 'All %1$s revalidated successfully (%2$d paths)', 'flatwp-headless-connector' ), $request->get_param( 'post_type' ), count( $paths ) );
 				break;
 		}
 
@@ -2160,7 +2160,7 @@ class FlatWP_REST_API {
 		if ( ! $logger ) {
 			return new WP_Error(
 				'logger_unavailable',
-				__( 'Logger functionality not available', 'flatwp-wordpress-connector' ),
+				__( 'Logger functionality not available', 'flatwp-headless-connector' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -2177,7 +2177,7 @@ class FlatWP_REST_API {
 		if ( ! $exported_data ) {
 			return new WP_Error(
 				'export_failed',
-				__( 'No logs to export or export failed', 'flatwp-wordpress-connector' ),
+				__( 'No logs to export or export failed', 'flatwp-headless-connector' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -2188,6 +2188,7 @@ class FlatWP_REST_API {
 		if ( $format === 'csv' ) {
 			header( 'Content-Type: text/csv; charset=utf-8' );
 			header( 'Content-Disposition: attachment; filename=' . $filename );
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- CSV data for file download, already sanitized
 			echo $exported_data;
 			exit;
 		}
@@ -2195,6 +2196,7 @@ class FlatWP_REST_API {
 		// JSON format
 		header( 'Content-Type: application/json; charset=utf-8' );
 		header( 'Content-Disposition: attachment; filename=' . $filename );
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON data for file download, already sanitized
 		echo $exported_data;
 		exit;
 	}

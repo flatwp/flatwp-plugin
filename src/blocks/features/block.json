@@ -7,11 +7,19 @@
   "category": "flatwp",
   "icon": "grid-view",
   "description": "Display features in a responsive grid with icons",
-  "keywords": ["features", "grid", "icons", "benefits"],
+  "keywords": [
+    "features",
+    "grid",
+    "icons",
+    "benefits"
+  ],
   "textdomain": "flatwp",
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "anchor": true,
     "className": true
   },
@@ -35,22 +43,38 @@
     "layout": {
       "type": "string",
       "default": "grid",
-      "enum": ["grid", "list", "centered"]
+      "enum": [
+        "grid",
+        "list",
+        "centered"
+      ]
     },
     "colorScheme": {
       "type": "string",
       "default": "light",
-      "enum": ["light", "dark", "transparent"]
+      "enum": [
+        "light",
+        "dark",
+        "transparent"
+      ]
     },
     "iconStyle": {
       "type": "string",
       "default": "filled",
-      "enum": ["filled", "outlined", "minimal"]
+      "enum": [
+        "filled",
+        "outlined",
+        "minimal"
+      ]
     },
     "iconPosition": {
       "type": "string",
       "default": "top",
-      "enum": ["top", "left", "inline"]
+      "enum": [
+        "top",
+        "left",
+        "inline"
+      ]
     }
   },
   "providesContext": {
@@ -60,5 +84,6 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./editor.css",
-  "style": "file:./style.css"
+  "style": "file:./style.css",
+  "render": "file:./render.php"
 }

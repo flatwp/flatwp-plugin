@@ -44,7 +44,7 @@ class FlatWP_Menu_Editor {
 		<div class="field-flatwp-icon description-wide">
 			<p class="description">
 				<label for="edit-menu-item-flatwp-icon-<?php echo esc_attr( $item_id ); ?>">
-					<?php _e( 'Icon (Lucide)', 'flatwp-wordpress-connector' ); ?><br />
+					<?php esc_html_e( 'Icon (Lucide)', 'flatwp-headless-connector' ); ?><br />
 					<input
 						type="text"
 						id="edit-menu-item-flatwp-icon-<?php echo esc_attr( $item_id ); ?>"
@@ -63,7 +63,7 @@ class FlatWP_Menu_Editor {
 		<div class="field-flatwp-badge description-wide">
 			<p class="description">
 				<label for="edit-menu-item-flatwp-badge-<?php echo esc_attr( $item_id ); ?>">
-					<?php _e( 'Badge Text', 'flatwp-wordpress-connector' ); ?><br />
+					<?php esc_html_e( 'Badge Text', 'flatwp-headless-connector' ); ?><br />
 					<input
 						type="text"
 						id="edit-menu-item-flatwp-badge-<?php echo esc_attr( $item_id ); ?>"
@@ -95,14 +95,18 @@ class FlatWP_Menu_Editor {
 	 */
 	public static function save_custom_fields( $menu_id, $menu_item_db_id ) {
 		// Check if icon field was submitted
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified by WordPress core menu save
 		if ( isset( $_POST['menu-item-flatwp-icon'][ $menu_item_db_id ] ) ) {
-			$icon_value = sanitize_text_field( $_POST['menu-item-flatwp-icon'][ $menu_item_db_id ] );
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified by WordPress core menu save
+			$icon_value = sanitize_text_field( wp_unslash( $_POST['menu-item-flatwp-icon'][ $menu_item_db_id ] ) );
 			update_post_meta( $menu_item_db_id, 'flatwp_icon', $icon_value );
 		}
 
 		// Check if badge field was submitted
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified by WordPress core menu save
 		if ( isset( $_POST['menu-item-flatwp-badge'][ $menu_item_db_id ] ) ) {
-			$badge_value = sanitize_text_field( $_POST['menu-item-flatwp-badge'][ $menu_item_db_id ] );
+			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Nonce verified by WordPress core menu save
+			$badge_value = sanitize_text_field( wp_unslash( $_POST['menu-item-flatwp-badge'][ $menu_item_db_id ] ) );
 			update_post_meta( $menu_item_db_id, 'flatwp_badge', $badge_value );
 		}
 	}

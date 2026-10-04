@@ -7,7 +7,12 @@
   "category": "flatwp",
   "icon": "align-center",
   "description": "A clean, minimal hero section with heading, description, and call-to-action.",
-  "keywords": ["hero", "header", "banner", "cta"],
+  "keywords": [
+    "hero",
+    "header",
+    "banner",
+    "cta"
+  ],
   "textdomain": "flatwp",
   "attributes": {
     "heading": {
@@ -21,7 +26,11 @@
     "alignment": {
       "type": "string",
       "default": "center",
-      "enum": ["left", "center", "right"]
+      "enum": [
+        "left",
+        "center",
+        "right"
+      ]
     },
     "ctaText": {
       "type": "string",
@@ -34,7 +43,10 @@
   },
   "supports": {
     "html": false,
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "className": true,
     "color": {
       "background": true,
@@ -47,5 +59,6 @@
   },
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "style": "file:./style-index.css"
+  "style": "file:./style-index.css",
+  "render": "file:./render.php"
 }

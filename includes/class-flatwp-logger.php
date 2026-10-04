@@ -155,6 +155,7 @@ class FlatWP_Logger {
 
 		$format = array( '%d', '%s', '%s', '%s', '%s', '%s', '%d', '%d', '%d' );
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
 		$result = $wpdb->insert( $table_name, $data, $format );
 
 		if ( $result ) {
@@ -351,6 +352,8 @@ class FlatWP_Logger {
 		$where_clause = implode( ' AND ', $where );
 
 		// Get total count
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 		$total = $wpdb->get_var( "SELECT COUNT(*) FROM {$table_name} WHERE {$where_clause}" );
 
 		// Calculate offset
@@ -359,7 +362,9 @@ class FlatWP_Logger {
 		// Get logs
 		$orderby = sanitize_sql_orderby( $args['orderby'] . ' ' . $args['order'] );
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
 		$logs = $wpdb->get_results(
+			// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 			$wpdb->prepare(
 				"SELECT * FROM {$table_name} WHERE {$where_clause} ORDER BY {$orderby} LIMIT %d OFFSET %d",
 				$args['per_page'],
@@ -417,6 +422,9 @@ class FlatWP_Logger {
 			$where .= $wpdb->prepare( ' AND timestamp >= %d', $since_timestamp );
 		}
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Where clause is safely constructed from internal constants
 		$count = $wpdb->get_var( "SELECT COUNT(*) FROM {$table_name} WHERE {$where}" );
 
 		return (int) $count;
@@ -432,13 +440,15 @@ class FlatWP_Logger {
 
 		$table_name = $wpdb->prefix . self::TABLE_NAME;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 		$result = $wpdb->query( "TRUNCATE TABLE {$table_name}" );
 
 		if ( $result !== false ) {
 			$this->log(
 				self::TYPE_SYSTEM,
 				self::SEVERITY_INFO,
-				__( 'All logs cleared', 'flatwp-wordpress-connector' )
+				__( 'All logs cleared', 'flatwp-headless-connector' )
 			);
 			return true;
 		}
@@ -457,6 +467,7 @@ class FlatWP_Logger {
 
 		$table_name = $wpdb->prefix . self::TABLE_NAME;
 
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
 		$result = $wpdb->delete(
 			$table_name,
 			array( 'type' => $type ),
@@ -497,6 +508,7 @@ class FlatWP_Logger {
 	 * @return string CSV data.
 	 */
 	private function export_as_csv( $logs ) {
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- Using php://temp for in-memory CSV generation
 		$output = fopen( 'php://temp', 'r+' );
 
 		// CSV headers
@@ -507,7 +519,7 @@ class FlatWP_Logger {
 		foreach ( $logs as $log ) {
 			$row = array(
 				$log['id'],
-				date( 'Y-m-d H:i:s', $log['timestamp'] ),
+				gmdate( 'Y-m-d H:i:s', $log['timestamp'] ),
 				$log['type'],
 				$log['severity'],
 				$log['message'],
@@ -520,6 +532,7 @@ class FlatWP_Logger {
 
 		rewind( $output );
 		$csv = stream_get_contents( $output );
+		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose -- Closing php://temp stream
 		fclose( $output );
 
 		return $csv;
@@ -536,13 +549,17 @@ class FlatWP_Logger {
 		$table_name = $wpdb->prefix . self::TABLE_NAME;
 
 		// Get total count
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 		$total = $wpdb->get_var( "SELECT COUNT(*) FROM {$table_name}" );
 
 		// If we're over the limit, delete oldest logs
 		if ( $total > $this->max_logs ) {
 			$to_delete = $total - $this->max_logs;
 
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
 			$wpdb->query(
+				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 				$wpdb->prepare(
 					"DELETE FROM {$table_name} ORDER BY timestamp ASC LIMIT %d",
 					$to_delete
@@ -601,9 +618,13 @@ class FlatWP_Logger {
 		);
 
 		// Total logs
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 		$stats['total_logs'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$table_name}" );
 
 		// By type
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 		$type_counts = $wpdb->get_results(
 			"SELECT type, COUNT(*) as count FROM {$table_name} GROUP BY type",
 			ARRAY_A
@@ -613,6 +634,8 @@ class FlatWP_Logger {
 		}
 
 		// By severity
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom plugin logging table requires direct queries
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Variables are safely constructed internally
 		$severity_counts = $wpdb->get_results(
 			"SELECT severity, COUNT(*) as count FROM {$table_name} GROUP BY severity",
 			ARRAY_A
